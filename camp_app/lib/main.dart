@@ -1,4 +1,5 @@
 import 'package:camp_app/timetable/timetable.dart';
+import 'package:camp_app/ui/parent_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'chat_page.dart';
 import 'package:intl/date_symbol_data_local.dart';

@@ -52,7 +52,10 @@ class _ChatPageState extends State<ChatPage> {
                   },
                   child: Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: Text('    Photo', style: TextStyle(fontSize: 16, color: AppColors.textDark),),
+                    child: Text(
+                      '    Photo',
+                      style: TextStyle(fontSize: 16, color: AppColors.textDark),
+                    ),
                   ),
                 ),
                 TextButton(
