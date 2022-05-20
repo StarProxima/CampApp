@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../app_colors.dart';
 import '../scrollAbleList/src/scrollable_positioned_list.dart';
+import '../styles/classStyles.dart';
 
 class ParentProfilePage extends StatefulWidget {
   const ParentProfilePage({Key? key}) : super(key: key);
@@ -71,7 +72,8 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromARGB(33, 188, 188, 188), //shadowColor
+                          color:
+                              Color.fromARGB(33, 188, 188, 188), //shadowColor
                           spreadRadius: 8,
                           blurRadius: 8,
                           offset: Offset.zero, // changes position of shadow
@@ -175,7 +177,8 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: Color.fromARGB(33, 188, 188, 188), //shadowColor
+                                color: Color.fromARGB(
+                                    33, 188, 188, 188), //shadowColor
                                 spreadRadius: 8,
                                 blurRadius: 8,
                                 offset:
@@ -191,7 +194,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                           constraints:
                               const BoxConstraints(maxWidth: double.infinity),
                           child: Text(
-                            "Рустам"+index.toString(),
+                            "Рустам" + index.toString(),
                             textAlign: TextAlign.justify,
                             style: const TextStyle(
                               color: Color(0xFFA6B2C3),
@@ -226,30 +229,32 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
-                )
-            ),
+                )),
             const SizedBox(
               height: 10,
             ),
-            ElevatedButton(
-              onPressed: () {
-                        log("1");
-                      },
-              child: Container(
-                  margin: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                  ),
-                  color: AppColors.background,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children:  [
-                              const SizedBox(
+            Container(
+                margin: const EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 42,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          log("1");
+                        },
+                        style: appButtonStyle,
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
                                 width: 24,
                                 height: 24,
+                                margin: EdgeInsets.only(left: 8),
                                 child: Image(
                                   image: AppImages.testPic,
                                 ),
@@ -261,37 +266,192 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                                   margin: const EdgeInsets.only(
                                     left: 16,
                                   ),
-                                  height: 40,
-                                  color: AppColors.background,
                                   child: const Text(
                                     "Личные данные",
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 0, 0, 0),
                                       fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16,
                                     ),
-                                  )
-                              ),
+                                  )),
                               Expanded(
                                 child: Container(
-                                  constraints: const BoxConstraints(maxWidth: 640),
+                                  constraints:
+                                      const BoxConstraints(maxWidth: 640),
                                 ),
                               ),
-                              const SizedBox(
+                              Container(
                                 width: 24,
                                 height: 24,
+                                margin: EdgeInsets.only(right: 8),
                                 child: Image(
                                   image: AppImages.testPic,
                                 ),
                               ),
-                            ]
-                          )
-                        ],
+                            ]),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 42,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          log("1");
+                        },
+                        style: appButtonStyle,
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 24,
+                                height: 24,
+                                margin: EdgeInsets.only(left: 8),
+                                child: Image(
+                                  image: AppImages.testPic,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Container(
+                                  margin: const EdgeInsets.only(
+                                    left: 16,
+                                  ),
+                                  child: const Text(
+                                    "Способ оплаты",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16,
+                                    ),
+                                  )),
+                              Expanded(
+                                child: Container(
+                                  constraints:
+                                      const BoxConstraints(maxWidth: 640),
+                                ),
+                              ),
+                              Container(
+                                width: 24,
+                                height: 24,
+                                margin: EdgeInsets.only(right: 8),
+                                child: Image(
+                                  image: AppImages.testPic,
+                                ),
+                              ),
+                            ]),
+                      ),
+                    ),
+                  SizedBox(
+                    height: 42,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          log("1");
+                        },
+                        style: appButtonStyle,
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 24,
+                                height: 24,
+                                margin: EdgeInsets.only(left: 8),
+                                child: Image(
+                                  image: AppImages.testPic,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Container(
+                                  margin: const EdgeInsets.only(
+                                    left: 16,
+                                  ),
+                                  child: const Text(
+                                    "Обратная связь",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16,
+                                    ),
+                                  )),
+                              Expanded(
+                                child: Container(
+                                  constraints:
+                                      const BoxConstraints(maxWidth: 640),
+                                ),
+                              ),
+                              Container(
+                                width: 24,
+                                height: 24,
+                                margin: EdgeInsets.only(right: 8),
+                                child: Image(
+                                  image: AppImages.testPic,
+                                ),
+                              ),
+                            ]),
+                      ),
+                  ),
+                  SizedBox(
+                    height: 42,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          log("1");
+                        },
+                        style: appButtonStyle,
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 24,
+                                height: 24,
+                                margin: EdgeInsets.only(left: 8),
+                                child: const Image(
+                                  image: AppImages.testPic,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Container(
+                                  margin: const EdgeInsets.only(
+                                    left: 16,
+                                  ),
+                                  child: const Text(
+                                    "Выход",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 16,
+                                    ),
+                                  )),
+                              Expanded(
+                                child: Container(
+                                  constraints:
+                                      const BoxConstraints(maxWidth: 640),
+                                ),
+                              ),
+                              Container(
+                                width: 24,
+                                height: 24,
+                                margin: EdgeInsets.only(right: 8),
+                                child: Image(
+                                  image: AppImages.testPic,
+                                ),
+                              ),
+                            ]),
+                      ),
                   )
-              ),
-            ),
+                  
+                  ],
+                )),
           ],
         ),
       ),
