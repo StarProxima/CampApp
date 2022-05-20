@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +53,10 @@ class _ChatPageState extends State<ChatPage> {
                   },
                   child: Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: Text('    Photo', style: TextStyle(fontSize: 16, color: AppColors.textDark),),
+                    child: Text(
+                      '    Photo',
+                      style: TextStyle(fontSize: 16, color: AppColors.textDark),
+                    ),
                   ),
                 ),
                 TextButton(
@@ -145,7 +147,7 @@ class _ChatPageState extends State<ChatPage> {
     final index = _messages.indexWhere((element) => element.id == message.id);
     final updatedMessage = _messages[index].copyWith(previewData: previewData);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       setState(() {
         _messages[index] = updatedMessage;
       });
@@ -165,9 +167,8 @@ class _ChatPageState extends State<ChatPage> {
 
   void _loadMessages() async {
     final response = await rootBundle.loadString('assets/messages.json');
-    final messages = (jsonDecode(response) as List)
-        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-        .toList();
+    final messages =
+        (jsonDecode(response) as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
 
     setState(() {
       _messages = messages;
@@ -185,7 +186,7 @@ class _ChatPageState extends State<ChatPage> {
           inputBackgroundColor: AppColors.background,
           inputTextColor: AppColors.textDark,
           inputContainerDecoration: BoxDecoration(
-          border: Border.all(width: 2, color: AppColors.border),
+            border: Border.all(width: 2, color: AppColors.border),
           ),
         ),
         messages: _messages,
