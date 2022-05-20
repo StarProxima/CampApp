@@ -12,6 +12,7 @@ import 'package:open_file/open_file.dart';
 import 'package:uuid/uuid.dart';
 
 import 'app_colors.dart';
+import 'event_page.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -67,7 +68,11 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    //Вызов нового окна поверх.
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EventPage()));
+                  },
+                  //onPressed: () => Navigator.pop(context),
                   child: const Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Text('    Cancel', style: TextStyle(fontSize: 16, color: Colors.red)),
