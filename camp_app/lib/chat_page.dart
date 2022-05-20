@@ -51,9 +51,9 @@ class _ChatPageState extends State<ChatPage> {
                     Navigator.pop(context);
                     _handleImageSelection();
                   },
-                  child: const Align(
+                  child: Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: Text('Photo'),
+                    child: Text('    Photo', style: TextStyle(fontSize: 16, color: AppColors.textDark),),
                   ),
                 ),
                 TextButton(
@@ -61,16 +61,16 @@ class _ChatPageState extends State<ChatPage> {
                     Navigator.pop(context);
                     _handleFileSelection();
                   },
-                  child: const Align(
+                  child: Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: Text('File'),
+                    child: Text('    File', style: TextStyle(fontSize: 16, color: AppColors.textDark)),
                   ),
                 ),
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: const Align(
                     alignment: AlignmentDirectional.centerStart,
-                    child: Text('Cancel'),
+                    child: Text('    Cancel', style: TextStyle(fontSize: 16, color: Colors.red)),
                   ),
                 ),
               ],
