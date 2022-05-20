@@ -89,6 +89,7 @@ class _EventPage extends State<EventPage> {
                           child: ListView(
                             padding: const EdgeInsets.only(
                               top: 0,
+                              bottom: 16,
                             ),
                             children: [
                               Container(

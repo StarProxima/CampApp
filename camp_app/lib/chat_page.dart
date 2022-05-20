@@ -11,6 +11,8 @@ import 'package:open_file/open_file.dart';
 import 'package:uuid/uuid.dart';
 
 import 'app_colors.dart';
+import 'app_images.dart';
+import 'button_styles.dart';
 import 'event_page.dart';
 
 class ChatPage extends StatefulWidget {
@@ -147,7 +149,7 @@ class _ChatPageState extends State<ChatPage> {
     final index = _messages.indexWhere((element) => element.id == message.id);
     final updatedMessage = _messages[index].copyWith(previewData: previewData);
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         _messages[index] = updatedMessage;
       });
@@ -177,24 +179,77 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Chat(
-        theme: DefaultChatTheme(
-          primaryColor: AppColors.primary,
-          secondaryColor: AppColors.border,
-          inputBorderRadius: BorderRadius.zero,
-          inputBackgroundColor: AppColors.background,
-          inputTextColor: AppColors.textDark,
-          inputContainerDecoration: BoxDecoration(
-            border: Border.all(width: 2, color: AppColors.border),
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+
+
+            Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              height: 52,
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                border: Border.all(width: 2, color: AppColors.border),
+              ),
+              child: Text(
+                'Администрация',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.textDark,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            
+            Container(
+                //alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(
+                  top: 2,
+                  left: 2,
+                ),
+                child: ElevatedButton(
+                    style: appButtonStyle,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Image(
+                      height: 24,
+                      width: 24,
+                      image: AppImages.back,
+                    )),
+              ),
+
+
+            Padding(
+              padding: const EdgeInsets.only(
+                    top: 52,
+              ),
+              child: Chat(
+              showUserAvatars: true,
+              isLastPage: true,
+              theme: DefaultChatTheme(
+                primaryColor: AppColors.primary,
+                secondaryColor: AppColors.border,
+                inputBorderRadius: BorderRadius.zero,
+                inputBackgroundColor: AppColors.background,
+                inputTextColor: AppColors.textDark,
+                inputContainerDecoration: BoxDecoration(
+                  border: Border.all(width: 2, color: AppColors.border),
+                ),
+              ),
+              messages: _messages,
+              onAttachmentPressed: _handleAtachmentPressed,
+              onMessageTap: _handleMessageTap,
+              onPreviewDataFetched: _handlePreviewDataFetched,
+              onSendPressed: _handleSendPressed,
+              user: _user,
           ),
+            ),
+          ],
         ),
-        messages: _messages,
-        onAttachmentPressed: _handleAtachmentPressed,
-        onMessageTap: _handleMessageTap,
-        onPreviewDataFetched: _handlePreviewDataFetched,
-        onSendPressed: _handleSendPressed,
-        user: _user,
       ),
     );
   }
