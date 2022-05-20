@@ -1,0 +1,70 @@
+import 'package:camp_app/app_colors.dart';
+import 'package:flutter/material.dart';
+
+import 'event.dart';
+
+class TimeTable extends StatefulWidget {
+  const TimeTable({Key? key}) : super(key: key);
+
+  @override
+  _TimeTableState createState() => _TimeTableState();
+}
+
+class _TimeTableState extends State<TimeTable> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 64,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            child: Text(
+              "Расписание",
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 36,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            height: 48,
+            child: Row(
+              children: [
+                Text(
+                  "Сегодня",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24, color: AppColors.primary),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SizedBox(
+              child: ListView.separated(
+                padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
+                itemBuilder: (context, index) {
+                  return Event(
+                    isActive: index == 2,
+                  );
+                },
+                itemCount: 10,
+                separatorBuilder: (context, index) {
+                  return const SizedBox(height: 8);
+                },
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -1,3 +1,4 @@
+import 'package:camp_app/timetable/timetable.dart';
 import 'package:flutter/material.dart';
 
 import 'chat_page.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ChatPage(),
+      home: TimeTable(),
     );
   }
 }
@@ -54,16 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       appBar: AppBar(
-       
         title: Text(widget.title),
       ),
       body: Center(
-        
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -80,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }
