@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:camp_app/app_colors.dart';
+import 'package:camp_app/styles/classStyles.dart';
 import 'package:flutter/material.dart';
 
 import 'event.dart';
@@ -11,6 +14,8 @@ class TimeTable extends StatefulWidget {
 }
 
 class _TimeTableState extends State<TimeTable> {
+  DateTime? selectedDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +49,14 @@ class _TimeTableState extends State<TimeTable> {
                   "Сегодня",
                   style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24, color: AppColors.primary),
                 ),
+                const Spacer(),
+                ElevatedButton(
+                  style: appButtonStyle,
+                  onPressed: () {
+                    //DatePickerDialog()
+                  },
+                  child: Text("C"),
+                )
               ],
             ),
           ),

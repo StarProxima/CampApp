@@ -20,10 +20,30 @@ ButtonStyle appButtonStyle = ButtonStyle(
       },
     ),
     padding: MaterialStateProperty.all(EdgeInsets.zero),
-
     shadowColor: MaterialStateProperty.all(Colors.transparent),
     shape: MaterialStateProperty.all(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6),
       ),
     ));
+
+ButtonStyle appButtonStyleAutorization = ButtonStyle(
+  elevation: MaterialStateProperty.all(0),
+  backgroundColor: MaterialStateProperty.resolveWith(
+    (states) {
+      return AppColors.primary;
+    },
+  ),
+  foregroundColor: MaterialStateProperty.resolveWith(
+    (states) {
+      return AppColors.background;
+    },
+  ),
+  padding: MaterialStateProperty.all(EdgeInsets.zero),
+  shadowColor: MaterialStateProperty.all(Colors.transparent),
+  shape: MaterialStateProperty.all(
+    RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+  ),
+);

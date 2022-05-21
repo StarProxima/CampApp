@@ -31,8 +31,7 @@ class _EventPage extends State<EventPage> {
                     image: DecorationImage(
                   alignment: Alignment.topCenter,
                   fit: BoxFit.fitWidth,
-                  colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.2), BlendMode.darken),
+                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
                   image: AppImages.event,
                 )),
               ),
@@ -60,14 +59,13 @@ class _EventPage extends State<EventPage> {
                 top: 200,
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24),
-                    topRight: Radius.circular(24)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
                 child: Container(
                   color: AppColors.background,
                   child: Column(
                     children: [
                       Container(
+                        alignment: Alignment.topLeft,
                         padding: const EdgeInsets.only(
                           top: 16,
                           left: 16,
@@ -75,7 +73,7 @@ class _EventPage extends State<EventPage> {
                           bottom: 10,
                         ),
                         child: Text(
-                          'Ого это же разминга нижней части тела работаем ножками огггггоооооо',
+                          'Разминка',
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             color: AppColors.textDark,
