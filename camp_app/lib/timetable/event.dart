@@ -1,7 +1,6 @@
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/button_styles.dart';
-import 'package:camp_app/styles/classStyles.dart';
 import 'package:flutter/material.dart';
 
 import '../event_page.dart';
@@ -12,7 +11,7 @@ class Event extends StatefulWidget {
       : super(key: key);
 
   final title = "Разминка";
-  final description = "Раз раз и готово";
+  final description = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ";
   final bool isActive;
   final startTime = "8:00";
   final endTime = "8:30";
@@ -56,39 +55,47 @@ class _EventState extends State<Event> {
             border: Border.all(
                 color: widget.isActive ? AppColors.primary : AppColors.border,
                 width: 2)),
-        padding: const EdgeInsets.all(16),
+        
         child: Stack(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: widget.isActive ? AppColors.background : AppColors.textDark,
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: widget.isActive ? AppColors.background : AppColors.textDark,
+                    ),
                   ),
-                ),
-                //const Spacer(),
-                const SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  widget.description,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: widget.isActive
-                        ? AppColors.background.withAlpha(192)
-                        : AppColors.textDark.withAlpha(127),
-                  ),
-                )
-              ],
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                    ),
+                    child: Text(
+                      widget.description,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: widget.isActive
+                            ? AppColors.background.withAlpha(192)
+                            : AppColors.textDark.withAlpha(127),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
             isAttached != null
                     ? Container(
                       alignment: Alignment.topRight,
+                      margin: EdgeInsets.only(
+                        left: 10, top: 4,
+                      ),
+                      //alignment: Alignment.centerRight,
                       child: ElevatedButton(
                           style: onlyIconsMin,
                           onPressed: () {

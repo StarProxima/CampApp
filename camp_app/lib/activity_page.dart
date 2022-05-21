@@ -34,7 +34,7 @@ class _ActivityPageState extends State<ActivityPage> {
           const Padding(
             padding: EdgeInsets.only(left: 16, right: 16),
             child: Text(
-              "Активности",
+              "События",
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 36,
