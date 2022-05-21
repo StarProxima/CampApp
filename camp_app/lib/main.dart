@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'chat_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'ui/parents_child_page.dart';
+
 void main() {
   initializeDateFormatting().then((_) => runApp(const MyApp()));
 }
