@@ -71,7 +71,7 @@ class _TimeTableState extends State<TimeTable> {
                 ElevatedButton(
                   style: appButtonStyle,
                   onPressed: () {},
-                  child: Text("C"),
+                  child: Text(""),
                 )
               ],
             ),

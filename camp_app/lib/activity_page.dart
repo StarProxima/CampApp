@@ -19,7 +19,7 @@ class _ActivityPageState extends State<ActivityPage> {
   DateTime? selectedDate = DateTime.now();
 
   bool isAllActivity = true;
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

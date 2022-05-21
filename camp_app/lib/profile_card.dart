@@ -24,19 +24,15 @@ class ProfileCard extends StatelessWidget {
           Container(
             width: 96,
             height: 96,
-            decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.shadow,
-                    blurRadius: 16,
-                  )
-                ],
-                borderRadius: const BorderRadius.all(Radius.circular(48)),
-                border: Border.all(
-                  color: AppColors.border,
-                  width: 2,
-                ),
-                color: AppColors.background),
+            child: Image.network(
+                "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1"),
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: AppColors.shadow,
+                blurRadius: 16,
+              )
+            ], borderRadius: const BorderRadius.all(Radius.circular(48)), color: AppColors.background),
           ),
           const SizedBox(
             height: 8,

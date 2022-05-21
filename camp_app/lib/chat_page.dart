@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -43,46 +44,49 @@ class _ChatPageState extends State<ChatPage> {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
-        return SafeArea(
-          child: SizedBox(
-            height: 144,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _handleImageSelection();
-                  },
-                  child: Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Text(
-                      '    Photo',
-                      style: TextStyle(fontSize: 16, color: AppColors.textDark),
+        return Container(
+          color: AppColors.background,
+          child: SafeArea(
+            child: SizedBox(
+              height: 144,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _handleImageSelection();
+                    },
+                    child: Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text(
+                        '    Photo',
+                        style: TextStyle(fontSize: 16, color: AppColors.textDark),
+                      ),
                     ),
                   ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _handleFileSelection();
-                  },
-                  child: Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Text('    File', style: TextStyle(fontSize: 16, color: AppColors.textDark)),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _handleFileSelection();
+                    },
+                    child: Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text('    File', style: TextStyle(fontSize: 16, color: AppColors.textDark)),
+                    ),
                   ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const QRScanner()));
-                  },
-                  //onPressed: () => Navigator.pop(context),
-                  child: const Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Text('    Cancel', style: TextStyle(fontSize: 16, color: Colors.red)),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const QRScanner()));
+                    },
+                    //onPressed: () => Navigator.pop(context),
+                    child: const Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text('    Cancel', style: TextStyle(fontSize: 16, color: Colors.red)),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -111,6 +115,8 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _handleImageSelection() async {
+    log("here1");
+
     final result = await ImagePicker().pickImage(
       imageQuality: 70,
       maxWidth: 1440,
@@ -179,32 +185,38 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-
-
-            Container(
-              alignment: Alignment.center,
-              width: double.infinity,
-              height: 52,
-              decoration: BoxDecoration(
-                color: AppColors.background,
-                border: Border.all(width: 2, color: AppColors.border),
+    return Container(
+      color: AppColors.background,
+      child: SafeArea(
+        child: Scaffold(
+          body: Stack(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      color: AppColors.background,
+                    ),
+                    child: Text(
+                      'Администрация',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: AppColors.textDark,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 2,
+                    color: AppColors.border,
+                  )
+                ],
               ),
-              child: Text(
-                'Администрация',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.textDark,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            
-            Container(
+              Container(
                 //alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.only(
                   top: 2,
@@ -221,34 +233,29 @@ class _ChatPageState extends State<ChatPage> {
                       image: AppImages.back,
                     )),
               ),
-
-
-            Padding(
-              padding: const EdgeInsets.only(
-                    top: 52,
-              ),
-              child: Chat(
-              showUserAvatars: true,
-              isLastPage: true,
-              theme: DefaultChatTheme(
-                primaryColor: AppColors.primary,
-                secondaryColor: AppColors.border,
-                inputBorderRadius: BorderRadius.zero,
-                inputBackgroundColor: AppColors.background,
-                inputTextColor: AppColors.textDark,
-                inputContainerDecoration: BoxDecoration(
-                  border: Border.all(width: 2, color: AppColors.border),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 52,
+                ),
+                child: Chat(
+                  showUserAvatars: true,
+                  isLastPage: true,
+                  theme: DefaultChatTheme(
+                      primaryColor: AppColors.primary,
+                      secondaryColor: AppColors.border,
+                      inputBorderRadius: BorderRadius.zero,
+                      inputBackgroundColor: AppColors.background,
+                      inputTextColor: AppColors.textDark),
+                  messages: _messages,
+                  onAttachmentPressed: _handleAtachmentPressed,
+                  onMessageTap: _handleMessageTap,
+                  onPreviewDataFetched: _handlePreviewDataFetched,
+                  onSendPressed: _handleSendPressed,
+                  user: _user,
                 ),
               ),
-              messages: _messages,
-              onAttachmentPressed: _handleAtachmentPressed,
-              onMessageTap: _handleMessageTap,
-              onPreviewDataFetched: _handlePreviewDataFetched,
-              onSendPressed: _handleSendPressed,
-              user: _user,
+            ],
           ),
-            ),
-          ],
         ),
       ),
     );

@@ -1,9 +1,11 @@
+import 'package:camp_app/chat_page.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/profile_card.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 import 'award.dart';
 import 'ui/repeatable_widget.dart';
@@ -107,6 +109,9 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
             makeLine("Обо мне", AppImages.testPic, () {}),
             makeLine("Моя медкарта", AppImages.testPic, () {}),
             makeLine("Мои вожатые", AppImages.testPic, () {}),
+            makeLine("Обратная связь", AppImages.testPic, () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage()));
+            }),
             makeLine("Выход", AppImages.testPic, () {
               widget.onExit();
             }),
