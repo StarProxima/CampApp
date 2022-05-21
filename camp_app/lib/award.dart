@@ -1,14 +1,24 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:ui';
+
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class Award extends StatelessWidget {
-  const Award({Key? key}) : super(key: key);
+class AvatarCircle extends StatelessWidget {
+  const AvatarCircle(
+      {Key? key, this.urlImage, this.haveBorder = true, this.radius = 36})
+      : super(key: key);
 
+  final String? urlImage;
+  final bool haveBorder;
+  final int radius;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 72,
-      height: 72,
+      width: 2.0 * radius,
+      height: 2.0 * radius,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -17,9 +27,111 @@ class Award extends StatelessWidget {
           )
         ],
         color: AppColors.background,
-        borderRadius: const BorderRadius.all(Radius.circular(36)),
-        border: Border.all(color: AppColors.border, width: 2),
+        borderRadius: BorderRadius.all(Radius.circular(2.0 * radius)),
+        border: haveBorder
+            ? Border.all(color: AppColors.border, width: 2)
+            : Border.all(color: Colors.transparent, width: 0),
       ),
+      child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(2.0 * radius)),
+          child: urlImage != null ? Image.network(urlImage!) : Container()),
+    );
+  }
+}
+
+class Awards extends StatelessWidget {
+  const Awards({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.isReceived,
+    this.dateReceipt,
+    this.urlImage,
+  }) : super(key: key);
+
+  final String name;
+  final String description;
+  final String? urlImage;
+  final bool isReceived;
+  final DateTime? dateReceipt;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: 100,
+          
+          child: Column(
+            children: [
+              AvatarCircle(
+                urlImage: urlImage,
+                radius: 48,
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 10),
+                child: Column(
+                  children: [
+                    isReceived ?
+                      Column(
+                        children: [
+                          Text(
+                            "Получена",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 18, color: AppColors.primary, fontWeight: FontWeight.w900),
+                          ),
+                          dateReceipt != null ?
+                            Text(
+                              DateFormat('dd.MM.yyyy').format(dateReceipt!),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 14, color: AppColors.textGray, fontWeight: FontWeight.w500),
+                            )
+                          : Container()
+                        ],
+                      )
+                      :  
+                      // Text(
+                      //   "Отсутствует",
+                      //   textAlign: TextAlign.center,
+                      //   style: TextStyle(
+                      //       fontSize: 16, color: AppColors.textGray, fontWeight: FontWeight.w500),
+                      // ),
+                      Container(),
+                      
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 112, top: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.w700),
+                  )),
+              Container(
+                  padding: const EdgeInsets.only(
+                    top: 10,
+                    bottom: 20,
+                  ),
+                  child: Text(
+                    description,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w400),
+                  )),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

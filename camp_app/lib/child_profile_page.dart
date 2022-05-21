@@ -3,6 +3,7 @@ import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/profile_card.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/class_styles.dart';
+import 'package:camp_app/ui/awards_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -45,7 +46,13 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                   ),
                   const Spacer(),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AwardsPage()),
+                      );
+                    },
                     child: Text(
                       "Все награды",
                       style: TextStyle(
@@ -65,7 +72,9 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Award();
+                  return AvatarCircle(
+                    
+                  );
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
