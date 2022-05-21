@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
-import 'app_images.dart';
-import 'button_styles.dart';
+import 'styles/app_colors.dart';
+import 'styles/app_images.dart';
+import 'styles/button_styles.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({Key? key}) : super(key: key);

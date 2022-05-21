@@ -10,10 +10,11 @@ import 'package:mime/mime.dart';
 import 'package:open_file/open_file.dart';
 import 'package:uuid/uuid.dart';
 
-import 'app_colors.dart';
-import 'app_images.dart';
-import 'button_styles.dart';
+import 'styles/app_colors.dart';
+import 'styles/app_images.dart';
+import 'styles/button_styles.dart';
 import 'event_page.dart';
+import 'ui/qr_scanner.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -73,8 +74,7 @@ class _ChatPageState extends State<ChatPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    //Вызов нового окна поверх.
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EventPage()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const QRScanner()));
                   },
                   //onPressed: () => Navigator.pop(context),
                   child: const Align(
