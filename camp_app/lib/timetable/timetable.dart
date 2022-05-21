@@ -32,7 +32,7 @@ class _TimeTableState extends State<TimeTable> {
             child: Text(
               "Расписание",
               style: TextStyle(
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w800,
                 fontSize: 36,
               ),
               textAlign: TextAlign.left,
@@ -48,14 +48,12 @@ class _TimeTableState extends State<TimeTable> {
               children: [
                 Text(
                   "Сегодня",
-                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24, color: AppColors.primary),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24, color: AppColors.primary),
                 ),
                 const Spacer(),
                 ElevatedButton(
                   style: appButtonStyle,
-                  onPressed: () {
-                    //DatePickerDialog()
-                  },
+                  onPressed: () {},
                   child: Text("C"),
                 )
               ],

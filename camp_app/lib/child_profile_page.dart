@@ -9,7 +9,9 @@ import 'award.dart';
 import 'ui/repeatableWidget.dart';
 
 class ChildProfilePage extends StatefulWidget {
-  const ChildProfilePage({Key? key}) : super(key: key);
+  const ChildProfilePage({Key? key, required this.onExit}) : super(key: key);
+
+  final Function() onExit;
 
   @override
   State<ChildProfilePage> createState() => _ChildProfilePageState();
@@ -24,30 +26,19 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
         color: AppColors.background,
         padding: const EdgeInsets.only(top: 64),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Text(
-                "Профиль",
-                style: TextStyle(
-                  color: AppColors.textDark,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-            ),
             const ProfileCard(title: "Хахук Рустам", description: "Ребенок", imageURL: null, image: null),
             Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
               child: Row(
                 children: [
                   Text(
                     "Мои награды",
                     style: TextStyle(
                       color: AppColors.textDark,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w900,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const Spacer(),
@@ -58,7 +49,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                       style: TextStyle(
                         color: AppColors.primary,
                         fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     style: appButtonStyle,
@@ -102,7 +93,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                       style: TextStyle(
                         color: AppColors.primary,
                         fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     style: appButtonStyle,
@@ -110,21 +101,15 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
-              child: Text(
-                "Параметры",
-                style: TextStyle(
-                  color: AppColors.textDark,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
+            const SizedBox(
+              height: 32,
             ),
             makeLine("Обо мне", AppImages.testPic, () {}),
             makeLine("Моя медкарта", AppImages.testPic, () {}),
             makeLine("Мои вожатые", AppImages.testPic, () {}),
-            makeLine("Выход", AppImages.testPic, () {}),
+            makeLine("Выход", AppImages.testPic, () {
+              widget.onExit();
+            }),
             Spacer(),
           ],
         ),

@@ -3,8 +3,9 @@ import 'package:camp_app/styles/classStyles.dart';
 import 'package:flutter/material.dart';
 
 class Autorization extends StatefulWidget {
-  const Autorization({Key? key}) : super(key: key);
+  const Autorization({Key? key, required this.onLogin}) : super(key: key);
 
+  final Function() onLogin;
   @override
   _AutorizationState createState() => _AutorizationState();
 }
@@ -64,7 +65,9 @@ class _AutorizationState extends State<Autorization> {
               height: 48,
               child: ElevatedButton(
                 style: appButtonStyleAutorization,
-                onPressed: () {},
+                onPressed: () {
+                  widget.onLogin();
+                },
                 child: Text(
                   "Вход",
                   style: TextStyle(
