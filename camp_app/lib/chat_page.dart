@@ -191,30 +191,23 @@ class _ChatPageState extends State<ChatPage> {
         child: Scaffold(
           body: Stack(
             children: [
-              Column(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    height: 52,
-                    decoration: BoxDecoration(
-                      color: AppColors.background,
-                    ),
-                    child: Text(
-                      'Администрация',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColors.textDark,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
+              Container(
+                alignment: Alignment.center,
+                width: double.infinity,
+                height: 52,
+                decoration: BoxDecoration(
+                  color: AppColors.background,
+                  border: Border(bottom: BorderSide(color: AppColors.border, width: 2)),
+                ),
+                child: Text(
+                  'Администрация',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.textDark,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  Container(
-                    height: 2,
-                    color: AppColors.border,
-                  )
-                ],
+                ),
               ),
               Container(
                 //alignment: Alignment.centerLeft,
@@ -240,12 +233,17 @@ class _ChatPageState extends State<ChatPage> {
                 child: Chat(
                   showUserAvatars: true,
                   isLastPage: true,
+                  
                   theme: DefaultChatTheme(
                       primaryColor: AppColors.primary,
                       secondaryColor: AppColors.border,
                       inputBorderRadius: BorderRadius.zero,
                       inputBackgroundColor: AppColors.background,
-                      inputTextColor: AppColors.textDark),
+                      inputTextColor: AppColors.textDark,
+                      inputContainerDecoration: BoxDecoration(
+                        border: Border(top: BorderSide(color: AppColors.border, width: 2)),
+                      )
+                      ),
                   messages: _messages,
                   onAttachmentPressed: _handleAtachmentPressed,
                   onMessageTap: _handleMessageTap,
