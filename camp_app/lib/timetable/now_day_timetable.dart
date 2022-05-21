@@ -29,8 +29,8 @@ class NowDayTimetable {
     for (int i = 0; i < data['events'].length; i++) {
       var tmpEvent = EventForTimetable();
       tmpEvent.description = data['events'][i]['description'];
-      tmpEvent.to = data['events'][i]['to'];
-      tmpEvent.from = data['events'][i]['from'];
+      tmpEvent.to = int.parse(data['events'][i]['toTime']);
+      tmpEvent.from = int.parse(data['events'][i]['fromTime']);
       tmpEvent.name = data['events'][i]['name'];
       tmpEvent.urlPhoto = data['events'][i]['urlPhoto'];
       tmpEvent.urlMap = data['events'][i]['urlMap'];
@@ -39,21 +39,18 @@ class NowDayTimetable {
     return tmpObj;
   }
 
-  static NowDayTimetable getNowDayTimetable(int index, int mount, int day) {
+  static Future<NowDayTimetable> getNowDayTimetable(int index, int mount, int day) async {
     int weekday = DateTime(2022, mount, day).weekday;
     String json = "";
     var url = Uri(
-            scheme: "https",
-            host: "studrasp.ru",
-            path: 'CampApp.php',
-            queryParameters: {
-          'action': 'get_timetable_json',
-          'index': '${index}',
-          'weekday': '${weekday}'
-        });
-        log(url.toString());
-    var pleas = http.get(Uri.parse("https://studrasp.ru/CampApp.php?action=get_timetable_json&index=1&weekday=7"));
+        scheme: "https",
+        host: "studrasp.ru",
+        path: 'CampApp.php',
+        queryParameters: {'action': 'get_timetable_json', 'index': '${index}', 'weekday': '${weekday}'});
+    log(url.toString());
+    var pleas =
+        await http.get(Uri.parse("https://studrasp.ru/CampApp.php?action=get_timetable_json&index=1&weekday=7"));
     // flutter clean не работает. От pleas нужно получить ответ.
-    return deserialize(pleas.toString());
+    return deserialize(pleas.body.toString());
   }
 }

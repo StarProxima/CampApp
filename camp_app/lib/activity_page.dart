@@ -60,11 +60,7 @@ class _ActivityPageState extends State<ActivityPage> {
                     },
                     child: Text(
                       "Закрепленные",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: isAllActivity
-                              ? AppColors.textDark
-                              : AppColors.background),
+                      style: TextStyle(fontSize: 16, color: isAllActivity ? AppColors.textDark : AppColors.background),
                     ),
                   ),
                 ),
@@ -81,11 +77,7 @@ class _ActivityPageState extends State<ActivityPage> {
                     },
                     child: Text(
                       "Все активности",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: isAllActivity
-                              ? AppColors.background
-                              : AppColors.textDark),
+                      style: TextStyle(fontSize: 16, color: isAllActivity ? AppColors.background : AppColors.textDark),
                     ),
                   ),
                 )
@@ -95,12 +87,16 @@ class _ActivityPageState extends State<ActivityPage> {
           Expanded(
             child: SizedBox(
               child: ListView.separated(
-                padding: const EdgeInsets.only(
-                    bottom: 16, left: 16, right: 16, top: 16),
+                padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
                 itemBuilder: (context, index) {
                   return Event(
                     isActive: index == 2,
                     isAttached: index == 2,
+                    title: "aaa",
+                    description: "bbb",
+                    startTime: 0,
+                    endTime: 10,
+                    onTap: () {},
                   );
                 },
                 itemCount: 10,

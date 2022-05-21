@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/class_Styles.dart';
+import 'package:camp_app/timetable/now_day_timetable.dart';
 import 'package:flutter/material.dart';
 
+import '../event_page.dart';
 import 'event.dart';
 
 class TimeTable extends StatefulWidget {
@@ -15,6 +17,21 @@ class TimeTable extends StatefulWidget {
 
 class _TimeTableState extends State<TimeTable> {
   DateTime? selectedDate = DateTime.now();
+  late NowDayTimetable table = NowDayTimetable();
+  @override
+  void initState() {
+    super.initState();
+
+    loadTable().then((value) {
+      setState(() {
+        table = value;
+      });
+    });
+  }
+
+  Future<NowDayTimetable> loadTable() async {
+    return await NowDayTimetable.getNowDayTimetable(0, 0, 0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +83,22 @@ class _TimeTableState extends State<TimeTable> {
                 itemBuilder: (context, index) {
                   return Event(
                     isActive: index == 2,
+                    title: table.events[index].name,
+                    description: table.events[index].description,
+                    startTime: table.events[index].from,
+                    endTime: table.events[index].to,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EventPage(
+                                  eventID: 0,
+                                )),
+                      );
+                    },
                   );
                 },
-                itemCount: 10,
+                itemCount: table.events.length,
                 separatorBuilder: (context, index) {
                   return const SizedBox(height: 8);
                 },

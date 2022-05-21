@@ -6,7 +6,9 @@ import 'styles/app_images.dart';
 import 'styles/button_styles.dart';
 
 class EventPage extends StatefulWidget {
-  const EventPage({Key? key}) : super(key: key);
+  const EventPage({Key? key, required this.eventID}) : super(key: key);
+
+  final int eventID;
 
   @override
   State<EventPage> createState() => _EventPage();

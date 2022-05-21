@@ -6,24 +6,30 @@ import 'package:flutter/material.dart';
 import '../event_page.dart';
 
 class Event extends StatelessWidget {
-  const Event({Key? key, required this.isActive, this.isAttached})
+  const Event(
+      {Key? key,
+      required this.isActive,
+      this.isAttached,
+      required this.title,
+      required this.description,
+      required this.startTime,
+      required this.endTime,
+      required this.onTap})
       : super(key: key);
 
-  final title = "Разминка";
-  final description = "Раз раз и готово";
+  final title;
+  final description;
   final bool isActive;
-  final startTime = "8:00";
-  final endTime = "8:30";
+  final int startTime;
+  final int endTime;
   final bool? isAttached;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const EventPage()),
-        );
+        onTap();
       },
       child: Container(
         decoration: BoxDecoration(
@@ -37,9 +43,7 @@ class Event extends StatelessWidget {
                 offset: Offset.zero,
               ),
             ],
-            border: Border.all(
-                color: isActive ? AppColors.primary : AppColors.border,
-                width: 2)),
+            border: Border.all(color: isActive ? AppColors.primary : AppColors.border, width: 2)),
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +61,7 @@ class Event extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  "$startTime-$endTime",
+                  "${(startTime / 60).floor()}:${startTime % 60}-${(endTime / 60).floor()}:${endTime % 60}",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -68,15 +72,12 @@ class Event extends StatelessWidget {
                     ? ElevatedButton(
                         style: onlyIcons,
                         onPressed: () {
-                          
                           //isAttached = !isAttached;
                         },
                         child: Image(
                           height: 24,
                           width: 24,
-                          image: isAttached!
-                              ? AppImages.attachSelected
-                              : AppImages.attach,
+                          image: isAttached! ? AppImages.attachSelected : AppImages.attach,
                         ))
                     : Container(),
               ],
@@ -89,9 +90,7 @@ class Event extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 14,
-                color: isActive
-                    ? AppColors.background.withAlpha(192)
-                    : AppColors.textDark.withAlpha(127),
+                color: isActive ? AppColors.background.withAlpha(192) : AppColors.textDark.withAlpha(127),
               ),
             )
           ],
