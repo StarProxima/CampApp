@@ -23,11 +23,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var selectedWidget = 0;
+  bool isAutorized = false;
 
   Widget getWidget(int index) {
     switch (index) {
       case 0:
-        return const ChildProfilePage();
+        return ChildProfilePage(
+          onExit: () {
+            setState(() {
+              isAutorized = false;
+            });
+          },
+        );
       default:
         return const TimeTable();
     }
@@ -36,25 +43,33 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: getWidget(selectedWidget),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: AppColors.background,
-          selectedItemColor: AppColors.primary,
-          unselectedItemColor: AppColors.textGray,
-          currentIndex: selectedWidget,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
-            BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "События"),
-          ],
-          onTap: (index) {
-            setState(() {
-              selectedWidget = index;
-            });
-          },
-        ),
-      ),
+      home: isAutorized
+          ? Scaffold(
+              body: getWidget(selectedWidget),
+              bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: AppColors.background,
+                selectedItemColor: AppColors.primary,
+                unselectedItemColor: AppColors.textGray,
+                currentIndex: selectedWidget,
+                items: const [
+                  BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
+                  BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
+                  BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "События"),
+                ],
+                onTap: (index) {
+                  setState(() {
+                    selectedWidget = index;
+                  });
+                },
+              ),
+            )
+          : Autorization(
+              onLogin: () {
+                setState(() {
+                  isAutorized = true;
+                });
+              },
+            ),
     );
   }
 }

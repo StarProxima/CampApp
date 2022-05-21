@@ -19,13 +19,19 @@ class ProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-      child: Row(
+      child: Column(
         children: [
           Container(
-            width: 72,
-            height: 72,
+            width: 96,
+            height: 96,
             decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(36)),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.shadow,
+                    blurRadius: 16,
+                  )
+                ],
+                borderRadius: const BorderRadius.all(Radius.circular(48)),
                 border: Border.all(
                   color: AppColors.border,
                   width: 2,
@@ -33,20 +39,16 @@ class ProfileCard extends StatelessWidget {
                 color: AppColors.background),
           ),
           const SizedBox(
-            width: 8,
+            height: 8,
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 title,
                 style: TextStyle(color: AppColors.textDark, fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                description,
-                style: TextStyle(color: AppColors.textGray, fontSize: 16, fontWeight: FontWeight.bold),
-              ),
+              )
             ],
           )
         ],
