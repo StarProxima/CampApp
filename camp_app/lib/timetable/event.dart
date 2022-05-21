@@ -2,6 +2,7 @@ import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/button_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../event_page.dart';
 
@@ -37,9 +38,15 @@ class _EventState extends State<Event> {
     isAttached = widget.isAttached;
     super.initState();
   }
+  
 
   @override
   Widget build(BuildContext context) {
+
+    DateTime start = DateTime.parse("2020-02-27 00:00:00").add(Duration(minutes: widget.startTime));
+
+    DateTime end = DateTime.parse("2020-02-27 00:00:00").add(Duration(minutes: widget.endTime));
+
     return GestureDetector(
       onTap: () {
         widget.onTap();
@@ -74,8 +81,9 @@ class _EventState extends State<Event> {
                 ),
                 const Spacer(),
                 Text(
-                  //"${Duration(hours: 0, minutes: widget.startTime)} - ${Duration(hours: 0, minutes: widget.endTime)}",
-                  "${(widget.startTime / 60).floor()}:${widget.startTime % 60}-${(widget.endTime / 60).floor()}:${widget.endTime % 60}",
+                  
+                  "${DateFormat('hh.mm').format(start)} - ${DateFormat('hh.mm').format(end)}",
+                  //"${(widget.startTime / 60).floor()}:${widget.startTime % 60}-${(widget.endTime / 60).floor()}:${widget.endTime % 60}""",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
