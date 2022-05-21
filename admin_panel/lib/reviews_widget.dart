@@ -1,8 +1,12 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:admin_panel/app_colors.dart';
 import 'package:admin_panel/button_styles.dart';
 import 'package:admin_panel/event_widget.dart';
 import 'package:admin_panel/review_card.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class ReviewsWidget extends StatefulWidget {
   const ReviewsWidget({Key? key, required this.event}) : super(key: key);
@@ -13,23 +17,62 @@ class ReviewsWidget extends StatefulWidget {
 }
 
 class _ReviewsWidgetState extends State<ReviewsWidget> {
-  var reviews = [
-    ReviewModel(3, "Нормально", "23.01.2003"),
-    ReviewModel(5, null, "23.01.2003"),
-    ReviewModel(1, "Ужас!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!\nasdadsa\nsadsadsad\nsdadsadadsadada dsada d !", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-    ReviewModel(5, "Класс!", "23.01.2003"),
-  ];
+  var reviews = [];
+  var rating = "";
 
-  void loadReviews() {
-    //todo: php requests
+  Future<String?> loadEvents() async {
+    var today = DateTime.now();
+    var url = Uri(scheme: "https", host: "studrasp.ru", path: 'CampApp.php', queryParameters: {
+      'action': 'get_all_reviews_for_timetable_event',
+      'index': '${widget.event.eventID}',
+      'date': '${today.year}-${today.month}-${today.day}',
+      'dayCount': '0'
+    });
+    log(url.toString());
+    var date = await http.get(url);
+    print(date.body.toString());
+    return date.body.toString();
+  }
+
+  Future<String?> loadRating() async {
+    var today = DateTime.now();
+    var url = Uri(scheme: "https", host: "studrasp.ru", path: 'CampApp.php', queryParameters: {
+      'action': 'get_avg_score_for_timetable_event',
+      'index': '${widget.event.eventID}',
+      'date': '${today.year}-${today.month}-${today.day}',
+      'dayCount': '0'
+    });
+    log(url.toString());
+    var date = await http.get(url);
+    return date.body.toString();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    loadEvents().then((value) {
+      if (value == null) {
+        reviews = [];
+      } else {
+        List<dynamic> values = jsonDecode(value);
+        setState(() {
+          reviews = [
+            for (int i = 0; i < values.length; i++)
+              ReviewModel(int.parse(values[i]['score']), values[i]['comments'], values[i]['date'])
+          ];
+        });
+      }
+
+      loadRating().then(
+        (value) {
+          setState(() {
+            rating = value!;
+          });
+        },
+      );
+    });
   }
 
   @override
@@ -95,7 +138,8 @@ class _ReviewsWidgetState extends State<ReviewsWidget> {
           child: Row(children: [
             const Text("Рейтинг", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             const Spacer(),
-            Text("3.5 звезды", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.primary)),
+            Text("${rating} звезды",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.primary)),
           ]),
         )
       ],

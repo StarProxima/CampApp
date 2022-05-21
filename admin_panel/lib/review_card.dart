@@ -61,7 +61,7 @@ class _ReviewCardState extends State<ReviewCard> {
               height: 8,
             ),
             Text(widget.model.comment!,
-                style: TextStyle(color: AppColors.textGray, fontSize: 16, fontWeight: FontWeight.w600)),
+                style: TextStyle(color: AppColors.textGray, fontSize: 16, fontWeight: FontWeight.w400)),
           ];
     return Container(
       padding: const EdgeInsets.all(8),

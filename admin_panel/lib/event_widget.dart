@@ -1,5 +1,6 @@
 import 'package:admin_panel/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class EventModel {
   EventModel(this.eventID, this.title);
@@ -17,9 +18,30 @@ class EventWidget extends StatefulWidget {
 }
 
 class _EventWidgetState extends State<EventWidget> {
-  double rating() {
-    //todo: php request
-    return 3.5;
+  Future<String?> loadRating() async {
+    var today = DateTime.now();
+    var url = Uri(scheme: "https", host: "studrasp.ru", path: 'CampApp.php', queryParameters: {
+      'action': 'get_avg_score_for_timetable_event',
+      'index': '${widget.model.eventID}',
+      'date': '${today.year}-${today.month}-${today.day}',
+      'dayCount': '0'
+    });
+    var date = await http.get(url);
+    return date.body.toString();
+  }
+
+  var starRating = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    loadRating().then((value) {
+      setState(() {
+        starRating = value!;
+      });
+    });
   }
 
   @override
@@ -41,7 +63,7 @@ class _EventWidgetState extends State<EventWidget> {
           Text(widget.model.title, style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.w700)),
           const Spacer(),
           Text(
-            "${rating()} звезды",
+            "${starRating} звезды",
             style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w700),
           ),
         ]),
