@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'chat_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'child_profile_page.dart';
 import 'ui/parents_child_page.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: TimeTable(),
+      home: ChildProfilePage(),
     );
   }
 }
