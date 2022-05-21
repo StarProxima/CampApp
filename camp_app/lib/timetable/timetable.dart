@@ -30,7 +30,7 @@ class _TimeTableState extends State<TimeTable> {
   }
 
   Future<NowDayTimetable> loadTable() async {
-    return await NowDayTimetable.getNowDayTimetable(0, 0, 0);
+    return await NowDayTimetable.getNowDayTimetable(1, 0, 0);
   }
 
   @override

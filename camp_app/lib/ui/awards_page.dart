@@ -1,25 +1,23 @@
 import 'dart:developer';
 
+import 'package:camp_app/award.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/button_styles.dart';
 import 'package:flutter/material.dart';
 
-import 'timetable/event.dart';
-
 //import 'event.dart';
 
-class ActivityPage extends StatefulWidget {
-  const ActivityPage({Key? key}) : super(key: key);
-
+class AwardsPage extends StatefulWidget {
+  const AwardsPage({Key? key}) : super(key: key);
+  
   @override
-  _ActivityPageState createState() => _ActivityPageState();
+  _AwardsPageState createState() => _AwardsPageState();
 }
 
-class _ActivityPageState extends State<ActivityPage> {
-  DateTime? selectedDate = DateTime.now();
-
-  bool isAllActivity = true;
+class _AwardsPageState extends State<AwardsPage> {
   
+  bool isAllAwards = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +32,7 @@ class _ActivityPageState extends State<ActivityPage> {
           const Padding(
             padding: EdgeInsets.only(left: 16, right: 16),
             child: Text(
-              "Активности",
+              "Награды",
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 36,
@@ -52,15 +50,15 @@ class _ActivityPageState extends State<ActivityPage> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    style: isAllActivity ? activity : activitySelected,
+                    style: isAllAwards ? activity : activitySelected,
                     onPressed: () {
                       setState(() {
-                        isAllActivity = !isAllActivity;
+                        isAllAwards = !isAllAwards;
                       });
                     },
                     child: Text(
-                      "Закрепленные",
-                      style: TextStyle(fontSize: 16, color: isAllActivity ? AppColors.textDark : AppColors.background),
+                      "Неполученные",
+                      style: TextStyle(fontSize: 16, color: isAllAwards ? AppColors.textDark : AppColors.background),
                     ),
                   ),
                 ),
@@ -69,15 +67,15 @@ class _ActivityPageState extends State<ActivityPage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    style: isAllActivity ? activitySelected : activity,
+                    style: isAllAwards ? activitySelected : activity,
                     onPressed: () {
                       setState(() {
-                        isAllActivity = !isAllActivity;
+                        isAllAwards = !isAllAwards;
                       });
                     },
                     child: Text(
-                      "Все активности",
-                      style: TextStyle(fontSize: 16, color: isAllActivity ? AppColors.background : AppColors.textDark),
+                      "Все награды",
+                      style: TextStyle(fontSize: 16, color: isAllAwards ? AppColors.background : AppColors.textDark),
                     ),
                   ),
                 )
@@ -89,14 +87,12 @@ class _ActivityPageState extends State<ActivityPage> {
               child: ListView.separated(
                 padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
                 itemBuilder: (context, index) {
-                  return Event(
-                    isActive: index == 2,
-                    isAttached: index == 2,
-                    title: "aaa",
-                    description: "bbb",
-                    startTime: 0,
-                    endTime: 10,
-                    onTap: () {},
+                  return Awards(
+                    name: 'За взятие Киева',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue ante vitae placerat mattis. Mauris rhoncus ex massa, vel placerat urna fermentum non. Phasellus posuere lobortis orci, vitae gravida sapien viverra ac.',
+                    urlImage: "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1",
+                    isReceived: index == 2,
+                    dateReceipt: DateTime.now(),
                   );
                 },
                 itemCount: 10,
