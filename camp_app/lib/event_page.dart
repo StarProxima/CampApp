@@ -24,19 +24,17 @@ class _EventPage extends State<EventPage> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            Expanded(
-              child: Container(
-                //alignment: Alignment.topCenter,
-                // width: MediaQuery.of(context).size.width,
-                //height: 500,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.fitWidth,
-                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
-                  image: AppImages.event,
-                )),
-              ),
+            Container(
+              //alignment: Alignment.topCenter,
+              // width: MediaQuery.of(context).size.width,
+              //height: 500,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                alignment: Alignment.topCenter,
+                fit: BoxFit.fitWidth,
+                colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+                image: AppImages.event,
+              )),
             ),
             SafeArea(
               child: Container(
@@ -102,7 +100,7 @@ class _EventPage extends State<EventPage> {
                                   'Когда человек встает с кровати, его организм какое-то время находится в переходном режиме – от бездействия к активности. \nУтренняя гимнастика помогает быстрее выполнить это переключение, настроиться на активную работу. Ее благотворное влияние на здоровье невозможно переоценить.',
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
-                                    color: AppColors.textDark,
+                                    color: AppColors.textGray,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                   ),

@@ -20,7 +20,7 @@ class _ActivityPageState extends State<ActivityPage> {
   DateTime? selectedDate = DateTime.now();
 
   bool isAllActivity = true;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +32,11 @@ class _ActivityPageState extends State<ActivityPage> {
           const SizedBox(
             height: 64,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Text(
               "Активности",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 36,
-              ),
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 36, color: AppColors.textDark),
               textAlign: TextAlign.left,
             ),
           ),
@@ -93,7 +90,8 @@ class _ActivityPageState extends State<ActivityPage> {
                   return Activity(
                     isAttached: index == 2,
                     title: "Активность",
-                    description: "Quisque at vulputate nunc. Mauris nec nisi quis massa commodo feugiat nec vitae sapien. Nulla hendrerit mauris eget neque dapibus consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla mollis risus vestibulum neque sollicitudin, a lobortis enim aliquam.",
+                    description:
+                        "Quisque at vulputate nunc. Mauris nec nisi quis massa commodo feugiat nec vitae sapien. Nulla hendrerit mauris eget neque dapibus consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla mollis risus vestibulum neque sollicitudin, a lobortis enim aliquam.",
                     onTap: () {},
                   );
                 },

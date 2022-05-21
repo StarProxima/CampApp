@@ -9,13 +9,12 @@ import 'package:flutter/material.dart';
 
 class AwardsPage extends StatefulWidget {
   const AwardsPage({Key? key}) : super(key: key);
-  
+
   @override
   _AwardsPageState createState() => _AwardsPageState();
 }
 
 class _AwardsPageState extends State<AwardsPage> {
-  
   bool isAllAwards = true;
 
   @override
@@ -29,14 +28,11 @@ class _AwardsPageState extends State<AwardsPage> {
           const SizedBox(
             height: 64,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Text(
               "Награды",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 36,
-              ),
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 36, color: AppColors.textDark),
               textAlign: TextAlign.left,
             ),
           ),
@@ -88,9 +84,11 @@ class _AwardsPageState extends State<AwardsPage> {
                 padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
                 itemBuilder: (context, index) {
                   return Awards(
-                    name: 'За взятие Киева',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue ante vitae placerat mattis. Mauris rhoncus ex massa, vel placerat urna fermentum non. Phasellus posuere lobortis orci, vitae gravida sapien viverra ac.',
-                    urlImage: "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1",
+                    name: 'Ты большой молодец!',
+                    description:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue ante vitae placerat mattis. Mauris rhoncus ex massa, vel placerat urna fermentum non. Phasellus posuere lobortis orci, vitae gravida sapien viverra ac.',
+                    urlImage:
+                        "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1",
                     isReceived: index == 2,
                     dateReceipt: DateTime.now(),
                   );

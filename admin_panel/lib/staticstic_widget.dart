@@ -18,7 +18,8 @@ class _StatisticWidgetState extends State<StatisticWidget> {
   Future<String?> loadEvents() async {
     log("here");
 
-    var date = await http.get(Uri.parse("https://studrasp.ru/CampApp.php?action=get_all_eventToTimeTable"));
+    var date = await http.get(Uri.parse("https://studrasp.ru/CampApp.php?action=get_all_eventToTimeTable"),
+        headers: {'Content-Type': 'text/plain'});
     log(date.body.toString());
 
     return date.body.toString();
@@ -69,21 +70,19 @@ class _StatisticWidgetState extends State<StatisticWidget> {
                     showDialog(
                         context: context,
                         builder: (context) {
-                          return Expanded(
-                            child: Container(
-                              color: AppColors.shadow,
-                              child: Center(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(12),
-                                    ),
-                                    color: AppColors.background,
+                          return Container(
+                            color: AppColors.shadow,
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(12),
                                   ),
-                                  width: 420,
-                                  height: 640,
-                                  child: ReviewsWidget(event: events[index]),
+                                  color: AppColors.background,
                                 ),
+                                width: 420,
+                                height: 640,
+                                child: ReviewsWidget(event: events[index]),
                               ),
                             ),
                           );
