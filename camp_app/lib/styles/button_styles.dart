@@ -41,3 +41,28 @@ ButtonStyle appButtonStyle = ButtonStyle(
         borderRadius: BorderRadius.circular(256),
       ),
     ));
+
+ButtonStyle onlyIcons = ButtonStyle(
+    elevation: MaterialStateProperty.all(0),
+    backgroundColor: MaterialStateProperty.resolveWith(
+      (states) {
+        return Colors.transparent;
+      },
+    ),
+
+    padding: MaterialStateProperty.all(EdgeInsets.zero),
+    minimumSize: MaterialStateProperty.all(
+      const Size.square(54),
+    ),
+    fixedSize: MaterialStateProperty.all(
+      const Size.square(54),
+    ),
+    maximumSize: MaterialStateProperty.all(
+      const Size.square(54),
+    ),
+    shadowColor: MaterialStateProperty.all(Colors.transparent),
+    shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(256),
+      ),
+    ));

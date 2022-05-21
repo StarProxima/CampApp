@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../app_colors.dart';
+import 'app_colors.dart';
 
 ButtonStyle appButtonStyle = ButtonStyle(
     elevation: MaterialStateProperty.all(0),
