@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:camp_app/styles/app_colors.dart';
-import 'package:camp_app/styles/classStyles.dart';
+import 'package:camp_app/styles/class_Styles.dart';
 import 'package:flutter/material.dart';
 
 import 'event.dart';
