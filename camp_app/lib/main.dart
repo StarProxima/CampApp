@@ -1,23 +1,60 @@
+import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/autorization.dart';
+import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/timetable/timetable.dart';
 import 'package:camp_app/ui/parent_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'chat_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'child_profile_page.dart';
 import 'ui/parents_child_page.dart';
 
 void main() {
-  initializeDateFormatting().then((_) => runApp(const MyApp()));
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var selectedWidget = 0;
+
+  Widget getWidget(int index) {
+    switch (index) {
+      case 0:
+        return const ChildProfilePage();
+      default:
+        return const TimeTable();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ChatPage(),
+    return MaterialApp(
+      home: Scaffold(
+        body: getWidget(selectedWidget),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: AppColors.background,
+          selectedItemColor: AppColors.primary,
+          unselectedItemColor: AppColors.textGray,
+          currentIndex: selectedWidget,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
+            BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "События"),
+          ],
+          onTap: (index) {
+            setState(() {
+              selectedWidget = index;
+            });
+          },
+        ),
+      ),
     );
   }
 }
