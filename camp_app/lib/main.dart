@@ -26,6 +26,8 @@ class _MyAppState extends State<MyApp> {
   var selectedWidget = 0;
   bool isAutorized = false;
 
+  bool isParent = false;
+
   Widget getWidget(int index) {
     switch (index) {
       case 0:
@@ -47,30 +49,45 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: isAutorized
-          ? Scaffold(
-              body: getWidget(selectedWidget),
-              bottomNavigationBar: BottomNavigationBar(
-                backgroundColor: AppColors.background,
-                selectedItemColor: AppColors.primary,
-                unselectedItemColor: AppColors.textGray,
-                currentIndex: selectedWidget,
-                items: const [
-                  BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
-                  BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
-                  BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "Активности"),
-                ],
-                onTap: (index) {
-                  setState(() {
-                    selectedWidget = index;
-                  });
-                },
-              ),
-            )
+          ? isParent
+              ? ParentProfilePage(
+                  onExit: () {
+                    setState(() {
+                      isParent = false;
+                    });
+                  },
+                )
+              : Scaffold(
+                  body: getWidget(selectedWidget),
+                  bottomNavigationBar: BottomNavigationBar(
+                    backgroundColor: AppColors.background,
+                    selectedItemColor: AppColors.primary,
+                    unselectedItemColor: AppColors.textGray,
+                    currentIndex: selectedWidget,
+                    items: const [
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.person), label: "Профиль"),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.calendar_month),
+                          label: "Расписание"),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.sunny), label: "События"),
+                    ],
+                    onTap: (index) {
+                      setState(() {
+                        selectedWidget = index;
+                      });
+                    },
+                  ),
+                )
           : Autorization(
               onLogin: () {
                 setState(() {
                   isAutorized = true;
                 });
+              },
+              onRegister: () {
+                isParent = true;
               },
             ),
     );

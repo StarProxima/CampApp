@@ -3,24 +3,21 @@ import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/profile_card.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/class_styles.dart';
-import 'package:camp_app/ui/awards_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
-import 'award.dart';
-import 'ui/repeatable_widget.dart';
+import '../award.dart';
+import 'repeatable_widget.dart';
 
-class ChildProfilePage extends StatefulWidget {
-  const ChildProfilePage({Key? key, required this.onExit}) : super(key: key);
-
-  final Function() onExit;
+class ParentChildProfilePage extends StatefulWidget {
+  const ParentChildProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<ChildProfilePage> createState() => _ChildProfilePageState();
+  State<ParentChildProfilePage> createState() => _ParentChildProfilePageState();
 }
 
-class _ChildProfilePageState extends State<ChildProfilePage> {
+class _ParentChildProfilePageState extends State<ParentChildProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +34,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
               child: Row(
                 children: [
                   Text(
-                    "Мои награды",
+                    "Награды",
                     style: TextStyle(
                       color: AppColors.textDark,
                       fontSize: 20,
@@ -46,13 +43,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                   ),
                   const Spacer(),
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AwardsPage()),
-                      );
-                    },
+                    onPressed: () {},
                     child: Text(
                       "Все награды",
                       style: TextStyle(
@@ -72,9 +63,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return AvatarCircle(
-                    
-                  );
+                  return Award();
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
@@ -116,14 +105,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
               height: 24,
             ),
             makeLine("Обо мне", AppImages.testPic, () {}),
-            makeLine("Моя медкарта", AppImages.testPic, () {}),
             makeLine("Мои вожатые", AppImages.testPic, () {}),
-            makeLine("Обратная связь", AppImages.testPic, () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
-            }),
-            makeLine("Выход", AppImages.testPic, () {
-              widget.onExit();
-            }),
             Spacer(),
           ],
         ),
