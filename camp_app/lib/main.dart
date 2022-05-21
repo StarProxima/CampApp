@@ -9,7 +9,7 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'child_profile_page.dart';
 import 'ui/parents_child_page.dart';
-import 'activity_page.dart';
+import 'timetable/activity_page.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                 items: const [
                   BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
                   BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
-                  BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "События"),
+                  BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "Активности"),
                 ],
                 onTap: (index) {
                   setState(() {

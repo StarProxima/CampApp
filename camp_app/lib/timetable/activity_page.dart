@@ -4,7 +4,8 @@ import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/button_styles.dart';
 import 'package:flutter/material.dart';
 
-import 'timetable/event.dart';
+import 'activity.dart';
+import 'event.dart';
 
 //import 'event.dart';
 
@@ -89,13 +90,10 @@ class _ActivityPageState extends State<ActivityPage> {
               child: ListView.separated(
                 padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
                 itemBuilder: (context, index) {
-                  return Event(
-                    isActive: index == 2,
+                  return Activity(
                     isAttached: index == 2,
-                    title: "aaa",
-                    description: "bbb",
-                    startTime: 0,
-                    endTime: 10,
+                    title: "Активность",
+                    description: "1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 ",
                     onTap: () {},
                   );
                 },
