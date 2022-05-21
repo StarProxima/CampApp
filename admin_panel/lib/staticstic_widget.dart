@@ -18,9 +18,7 @@ class _StatisticWidgetState extends State<StatisticWidget> {
   Future<String?> loadEvents() async {
     log("here");
 
-    var date = await http.get(Uri.parse("https://studrasp.ru/CampApp.php?action=get_all_eventToTimeTable"),
-        headers: {'Content-Type': 'text/plain'});
-    log(date.body.toString());
+    var date = await http.get(Uri.parse("https://studrasp.ru/CampApp.php?action=get_all_eventToTimeTable"));
 
     return date.body.toString();
   }

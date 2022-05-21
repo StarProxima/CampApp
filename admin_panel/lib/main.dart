@@ -3,6 +3,7 @@ import 'package:admin_panel/staticstic_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
+import 'chats/chat_list_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Панель администратора',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -54,37 +55,31 @@ class _MyHomePageState extends State<MyHomePage> {
         Icons.favorite,
         color: AppColors.primary,
         size: 24.0,
-        semanticLabel: 'Text to announce in accessibility modes',
+        semanticLabel: '',
       ),
     ),
     Menu(
-      "Статистика",
+      "Сообщения",
       Icon(
         Icons.favorite,
         color: AppColors.primary,
         size: 24.0,
-        semanticLabel: 'Text to announce in accessibility modes',
-      ),
-    ),
-    Menu(
-      "Статистика",
-      Icon(
-        Icons.favorite,
-        color: AppColors.primary,
-        size: 24.0,
-        semanticLabel: 'Text to announce in accessibility modes',
+        semanticLabel: '',
       ),
     ),
   ];
 
   int selectedMenu = 0;
 
+  var staticsticWidget = StatisticWidget();
+  var chatListWidget = ChatListWidget();
+
   Widget getSelectedWidget() {
     switch (selectedMenu) {
       case 0:
-        return StatisticWidget();
+        return staticsticWidget;
       default:
-        return StatisticWidget();
+        return chatListWidget;
     }
   }
 
@@ -115,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Container(
                 color: AppColors.background,
-                width: 320,
+                width: 256,
                 child: ListView.separated(
                     padding: const EdgeInsets.only(top: 16, bottom: 16, left: 16, right: 16),
                     itemBuilder: (context, index) {
