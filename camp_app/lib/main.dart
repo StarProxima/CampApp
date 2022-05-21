@@ -9,7 +9,7 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'child_profile_page.dart';
 import 'ui/parents_child_page.dart';
-
+import 'activity_page.dart';
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
 }
@@ -28,7 +28,9 @@ class _MyAppState extends State<MyApp> {
     switch (index) {
       case 0:
         return const ChildProfilePage();
-      default:
+      case 2: 
+        return const ActivityPage();
+      default:;
         return const TimeTable();
     }
   }
