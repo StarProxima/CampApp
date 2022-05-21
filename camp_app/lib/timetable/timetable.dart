@@ -44,14 +44,11 @@ class _TimeTableState extends State<TimeTable> {
           const SizedBox(
             height: 64,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Text(
               "Расписание",
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                fontSize: 36,
-              ),
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 36, color: AppColors.textDark),
               textAlign: TextAlign.left,
             ),
           ),
@@ -91,8 +88,8 @@ class _TimeTableState extends State<TimeTable> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EventPage(
-                                  eventID: 0,
+                            builder: (context) => EventPage(
+                                  eventID: table.events[index].eventInd,
                                 )),
                       );
                     },

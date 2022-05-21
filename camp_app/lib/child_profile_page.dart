@@ -113,13 +113,13 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
               ),
             ),
             const SizedBox(
-              height: 32,
+              height: 24,
             ),
             makeLine("Обо мне", AppImages.testPic, () {}),
             makeLine("Моя медкарта", AppImages.testPic, () {}),
             makeLine("Мои вожатые", AppImages.testPic, () {}),
             makeLine("Обратная связь", AppImages.testPic, () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
             }),
             makeLine("Выход", AppImages.testPic, () {
               widget.onExit();

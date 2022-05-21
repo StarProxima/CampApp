@@ -10,7 +10,9 @@ import '../styles/class_styles.dart';
 import 'parents_child_page.dart';
 
 class ParentProfilePage extends StatefulWidget {
-  const ParentProfilePage({Key? key}) : super(key: key);
+  const ParentProfilePage({Key? key, required this.onExit}) : super(key: key);
+
+  final Function() onExit;
 
   @override
   State<ParentProfilePage> createState() => _ParentProfilePage();
