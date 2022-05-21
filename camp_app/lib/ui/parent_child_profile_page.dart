@@ -63,7 +63,11 @@ class _ParentChildProfilePageState extends State<ParentChildProfilePage> {
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Award();
+                  return Awards(
+                    name: "sdsd",
+                    description: "sdas",
+                    isReceived: true,
+                  );
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(

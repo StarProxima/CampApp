@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 import 'styles/app_colors.dart';
 import 'styles/app_images.dart';
 import 'styles/button_styles.dart';
+import 'package:http/http.dart' as http;
+
+class EventInfoModel {
+  EventInfoModel(this.title, this.description, this.imgUrl);
+  String imgUrl;
+  String title;
+  String description;
+}
 
 class EventPage extends StatefulWidget {
   const EventPage({Key? key, required this.eventID}) : super(key: key);
@@ -15,6 +23,18 @@ class EventPage extends StatefulWidget {
 }
 
 class _EventPage extends State<EventPage> {
+  var event = EventInfoModel("", "", "");
+
+  EventInfoModel loadEvent() {
+    var url = Uri(
+        scheme: "https",
+        host: "studrasp.ru",
+        path: 'CampApp.php',
+        queryParameters: {'action': 'get_timetable_json', 'index': '${index}', 'weekday': '${weekday}'});
+
+    return EventInfoModel("", "", "");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

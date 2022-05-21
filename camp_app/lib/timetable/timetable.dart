@@ -88,8 +88,8 @@ class _TimeTableState extends State<TimeTable> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EventPage(
-                                  eventID: 0,
+                            builder: (context) => EventPage(
+                                  eventID: table.events[index].eventInd,
                                 )),
                       );
                     },
