@@ -74,6 +74,7 @@ class _EventState extends State<Event> {
                 ),
                 const Spacer(),
                 Text(
+                  //"${Duration(hours: 0, minutes: widget.startTime)} - ${Duration(hours: 0, minutes: widget.endTime)}",
                   "${(widget.startTime / 60).floor()}:${widget.startTime % 60}-${(widget.endTime / 60).floor()}:${widget.endTime % 60}",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
