@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../styles/app_colors.dart';
 import '../scrollAbleList/src/scrollable_positioned_list.dart';
-import '../styles/classStyles.dart';
-import 'repeatableWidget.dart';
+import '../styles/class_styles.dart';
+import 'repeatable_widget.dart';
 
 class ParentChildPage extends StatefulWidget {
   const ParentChildPage({Key? key}) : super(key: key);

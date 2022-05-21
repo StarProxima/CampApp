@@ -1,12 +1,12 @@
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/profile_card.dart';
 import 'package:camp_app/styles/app_images.dart';
-import 'package:camp_app/styles/classStyles.dart';
+import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'award.dart';
-import 'ui/repeatableWidget.dart';
+import 'ui/repeatable_widget.dart';
 
 class ChildProfilePage extends StatefulWidget {
   const ChildProfilePage({Key? key, required this.onExit}) : super(key: key);

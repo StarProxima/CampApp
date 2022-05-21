@@ -1,5 +1,5 @@
 import 'package:camp_app/styles/app_colors.dart';
-import 'package:camp_app/styles/classStyles.dart';
+import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
 
 class Autorization extends StatefulWidget {
