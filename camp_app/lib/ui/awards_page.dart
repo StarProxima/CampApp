@@ -198,6 +198,7 @@ class _AwardsPageState extends State<AwardsPage> {
                               urlImage: awards[index].urlImage,
                               isReceived: awards[index].isReceived,
                               dateReceipt:awards[index].dateReceipt,
+                              rad: 48,
                             );
                           },
                           itemCount: awards.length,
