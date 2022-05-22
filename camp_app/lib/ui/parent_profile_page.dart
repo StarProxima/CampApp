@@ -214,13 +214,12 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
-                    fontFamily: 'Roboto',
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
                 )),
             const SizedBox(
-              height: 10,
+              height: 8,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

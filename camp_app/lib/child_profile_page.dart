@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:camp_app/chat_page.dart';
+import 'package:camp_app/shop.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/profile_card.dart';
 import 'package:camp_app/styles/app_images.dart';
@@ -130,7 +131,12 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                   ),
                   const Spacer(),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ShopWidget()),
+                      );
+                    },
                     child: Text(
                       "Каталог",
                       style: TextStyle(
