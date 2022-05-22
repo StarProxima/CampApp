@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:camp_app/image_cache.dart';
 import 'package:camp_app/shop.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:flutter/material.dart';

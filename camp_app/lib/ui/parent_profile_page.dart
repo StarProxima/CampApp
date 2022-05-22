@@ -265,7 +265,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                             clipBehavior: Clip.antiAlias,
                             width: 84,
                             height: 84,
-                            child: ImageCacheCore.load(
+                            child: Image.network(
                                 "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1"),
                             decoration: BoxDecoration(
                               color: AppColors.background,

@@ -85,14 +85,21 @@ class _TimeTableState extends State<TimeTable> {
                     description: table.events[index].description,
                     startTime: table.events[index].from,
                     endTime: table.events[index].to,
-                    
                     onTap: () {
                       loadEvent(table.events[index].eventInd).then((value) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return EventPage(eventID: table.events[index].eventInd, eventModel: value,
-                            map: index == 0 ? AppImages.mapCharge : index == 3 ? AppImages.mapPicknick : AppImages.mapEat,);
+                            return EventPage(
+                              eventID: table.events[index].eventInd,
+                              eventModel: value,
+                              eventImage: Image,
+                              map: index == 0
+                                  ? AppImages.mapCharge
+                                  : index == 3
+                                      ? AppImages.mapPicknick
+                                      : AppImages.mapEat,
+                            );
                           }),
                         );
                       });
