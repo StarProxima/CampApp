@@ -113,9 +113,13 @@ class _ParentChildPage extends State<ParentChildPage> {
             const SizedBox(
               height: 8,
             ),
-            makeLineI("Профиль", Icons.account_box_outlined, () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ParentChildProfilePage()));
-            },),
+            makeLineI(
+              "Профиль",
+              Icons.account_box_outlined,
+              () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ParentChildProfilePage()));
+              },
+            ),
             const SizedBox(
               height: 8,
             ),

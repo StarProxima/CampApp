@@ -10,7 +10,13 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Text("Рейтинг", style: TextStyle(color: AppColors.textDark, fontSize: 32, fontWeight: FontWeight.bold))
+      Padding(
+        padding: const EdgeInsets.only(top: 64, left: 16),
+        child: Text(
+          "Рейтинг",
+          style: TextStyle(color: AppColors.textDark, fontSize: 32, fontWeight: FontWeight.bold),
+        ),
+      )
     ]);
   }
 }
