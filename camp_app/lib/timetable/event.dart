@@ -31,18 +31,15 @@ class Event extends StatefulWidget {
 }
 
 class _EventState extends State<Event> {
-
   bool? isAttached;
   @override
   void initState() {
     isAttached = widget.isAttached;
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
-
     DateTime start = DateTime.parse("2020-02-27 00:00:00").add(Duration(minutes: widget.startTime));
 
     DateTime end = DateTime.parse("2020-02-27 00:00:00").add(Duration(minutes: widget.endTime));
@@ -81,16 +78,14 @@ class _EventState extends State<Event> {
                 ),
                 const Spacer(),
                 Text(
-                  
                   "${DateFormat('hh.mm').format(start)} - ${DateFormat('hh.mm').format(end)}",
                   //"${(widget.startTime / 60).floor()}:${widget.startTime % 60}-${(widget.endTime / 60).floor()}:${widget.endTime % 60}""",
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.normal,
                     fontSize: 14,
                     color: widget.isActive ? AppColors.background : AppColors.textDark,
                   ),
                 ),
-                
               ],
             ),
             const SizedBox(
@@ -99,7 +94,7 @@ class _EventState extends State<Event> {
             Text(
               widget.description,
               style: TextStyle(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.normal,
                 fontSize: 14,
                 color: widget.isActive ? AppColors.background.withAlpha(192) : AppColors.textDark.withAlpha(127),
               ),

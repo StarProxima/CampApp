@@ -48,10 +48,7 @@ class _TimeTableState extends State<TimeTable> {
             padding: const EdgeInsets.only(left: 16, right: 16),
             child: Text(
               "Расписание",
-              style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 36,
-                  color: AppColors.textDark),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36, color: AppColors.textDark),
               textAlign: TextAlign.left,
             ),
           ),
@@ -65,10 +62,7 @@ class _TimeTableState extends State<TimeTable> {
               children: [
                 Text(
                   "Сегодня",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24,
-                      color: AppColors.primary),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24, color: AppColors.primary),
                 ),
                 const Spacer(),
                 ElevatedButton(
@@ -82,8 +76,7 @@ class _TimeTableState extends State<TimeTable> {
           Expanded(
             child: SizedBox(
               child: ListView.separated(
-                padding: const EdgeInsets.only(
-                    bottom: 16, left: 16, right: 16, top: 16),
+                padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16, top: 16),
                 itemBuilder: (context, index) {
                   return Event(
                     isActive: index == 2,
@@ -94,13 +87,11 @@ class _TimeTableState extends State<TimeTable> {
                     onTap: () {
                       loadEvent(table.events[index].eventInd).then((value) {
                         Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return EventPage(
-                            eventID: table.events[index].eventInd, eventModel: value
-                          );
-                        }),
-                      );
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return EventPage(eventID: table.events[index].eventInd, eventModel: value);
+                          }),
+                        );
                       });
                     },
                   );

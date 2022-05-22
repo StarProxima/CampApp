@@ -1,14 +1,10 @@
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/autorization.dart';
-import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/timetable/timetable.dart';
 import 'package:camp_app/ui/parent_profile_page.dart';
 import 'package:flutter/material.dart';
-import 'chat_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
 import 'child_profile_page.dart';
-import 'ui/parents_child_page.dart';
 import 'timetable/activity_page.dart';
 
 void main() {
@@ -65,13 +61,9 @@ class _MyAppState extends State<MyApp> {
                     unselectedItemColor: AppColors.textGray,
                     currentIndex: selectedWidget,
                     items: const [
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.person), label: "Профиль"),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.calendar_month),
-                          label: "Расписание"),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.sunny), label: "События"),
+                      BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
+                      BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
+                      BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "События"),
                     ],
                     onTap: (index) {
                       setState(() {

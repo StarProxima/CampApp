@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AvatarCircle extends StatelessWidget {
-  const AvatarCircle(
-      {Key? key, this.urlImage, this.haveBorder = true, this.radius = 36})
-      : super(key: key);
+  const AvatarCircle({Key? key, this.urlImage, this.haveBorder = true, this.radius = 36}) : super(key: key);
 
   final String? urlImage;
   final bool haveBorder;
@@ -73,10 +71,8 @@ class Awards extends StatelessWidget {
                 ),
                 child: ColorFiltered(
                   colorFilter: isReceived
-                      ? ColorFilter.mode(
-                          Color.fromARGB(255, 255, 255, 255), BlendMode.modulate)
-                      : ColorFilter.mode(
-                          Color.fromARGB(73, 255, 255, 255), BlendMode.modulate),
+                      ? ColorFilter.mode(Color.fromARGB(255, 255, 255, 255), BlendMode.modulate)
+                      : ColorFilter.mode(Color.fromARGB(73, 255, 255, 255), BlendMode.modulate),
                   child: AvatarCircle(
                     urlImage: urlImage,
                     radius: 48,
@@ -92,10 +88,8 @@ class Awards extends StatelessWidget {
                               ? Text(
                                   DateFormat('dd.MM.yyyy').format(dateReceipt!),
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: AppColors.textGray,
-                                      fontWeight: FontWeight.w500),
+                                  style:
+                                      TextStyle(fontSize: 14, color: AppColors.textGray, fontWeight: FontWeight.normal),
                                 )
                               : Container()
                         ],
@@ -114,10 +108,7 @@ class Awards extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Text(
                     name,
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textDark),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: AppColors.textDark),
                   )),
               Container(
                   padding: const EdgeInsets.only(
@@ -126,10 +117,7 @@ class Awards extends StatelessWidget {
                   ),
                   child: Text(
                     description,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textGray),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: AppColors.textGray),
                   )),
             ],
           ),

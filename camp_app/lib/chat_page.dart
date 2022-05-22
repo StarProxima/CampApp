@@ -6,7 +6,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
 import 'package:open_file/open_file.dart';
 import 'package:uuid/uuid.dart';
@@ -14,7 +13,6 @@ import 'package:uuid/uuid.dart';
 import 'styles/app_colors.dart';
 import 'styles/app_images.dart';
 import 'styles/button_styles.dart';
-import 'event_page.dart';
 import 'ui/qr_scanner.dart';
 
 class ChatPage extends StatefulWidget {
@@ -233,7 +231,6 @@ class _ChatPageState extends State<ChatPage> {
                 child: Chat(
                   showUserAvatars: true,
                   isLastPage: true,
-                  
                   theme: DefaultChatTheme(
                       primaryColor: AppColors.primary,
                       secondaryColor: AppColors.border,
@@ -242,8 +239,7 @@ class _ChatPageState extends State<ChatPage> {
                       inputTextColor: AppColors.textDark,
                       inputContainerDecoration: BoxDecoration(
                         border: Border(top: BorderSide(color: AppColors.border, width: 2)),
-                      )
-                      ),
+                      )),
                   messages: _messages,
                   onAttachmentPressed: _handleAtachmentPressed,
                   onMessageTap: _handleMessageTap,

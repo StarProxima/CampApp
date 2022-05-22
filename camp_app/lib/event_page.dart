@@ -42,9 +42,7 @@ class ReviewContentState extends State<ReviewContent> {
                       width: sizeOfPic,
                       height: sizeOfPic,
                       child: Image(
-                        image: starLevel >= i
-                            ? AppImages.attachSelected
-                            : AppImages.attach,
+                        image: starLevel >= i ? AppImages.attachSelected : AppImages.attach,
                       ),
                     ),
                     style: appButtonStyle,
@@ -74,23 +72,19 @@ class EventInfoModel {
   String description;
 }
 
-  Future<EventInfoModel> loadEvent(int eventID) async {
-    var url = Uri(
-        scheme: "https",
-        host: "studrasp.ru",
-        path: 'CampApp.php',
-        queryParameters: {
-          'action': 'get_eventToTimetable_info',
-          'index': '${eventID}'
-        });
-    var pleas = await http.get(url);
+Future<EventInfoModel> loadEvent(int eventID) async {
+  var url = Uri(
+      scheme: "https",
+      host: "studrasp.ru",
+      path: 'CampApp.php',
+      queryParameters: {'action': 'get_eventToTimetable_info', 'index': '${eventID}'});
+  var pleas = await http.get(url);
 
-    String json = pleas.body.toString();
-    final data = jsonDecode(json);
-    var k = data["name"];
-    return EventInfoModel(data["name"], data["description"], data["urlPhoto"]);
-  }
-
+  String json = pleas.body.toString();
+  final data = jsonDecode(json);
+  var k = data["name"];
+  return EventInfoModel(data["name"], data["description"], data["urlPhoto"]);
+}
 
 class EventPage extends StatefulWidget {
   const EventPage({Key? key, required this.eventID, required this.eventModel}) : super(key: key);
@@ -104,8 +98,6 @@ class EventPage extends StatefulWidget {
 
 class _EventPage extends State<EventPage> {
   var event = EventInfoModel("", "", "");
-
-
 
   @override
   void initState() {
@@ -127,8 +119,7 @@ class _EventPage extends State<EventPage> {
             image: DecorationImage(
           alignment: Alignment.topCenter,
           fit: BoxFit.fitWidth,
-          colorFilter:
-              ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
           image: NetworkImage(event.imgUrl),
         )),
       );
@@ -141,20 +132,15 @@ class _EventPage extends State<EventPage> {
     DateTime now = new DateTime.now();
     DateTime date = new DateTime(now.year, now.month, now.day);
     //здесь нужно иметь индекс профиля
-    var url = Uri(
-        scheme: "https",
-        host: "studrasp.ru",
-        path: 'CampApp.php',
-        queryParameters: {
-          'action': 'add_review',
-          'childInd': '1',
-          'eventInd': '${widget.eventID}',
-          'starCount': '$starCount',
-          'textReview': textReview,
-          'date': '$date'
-        });
-    var pleas =
-        await http.get(url);
+    var url = Uri(scheme: "https", host: "studrasp.ru", path: 'CampApp.php', queryParameters: {
+      'action': 'add_review',
+      'childInd': '1',
+      'eventInd': '${widget.eventID}',
+      'starCount': '$starCount',
+      'textReview': textReview,
+      'date': '$date'
+    });
+    var pleas = await http.get(url);
     //log(url.toString());
   }
 
@@ -181,8 +167,7 @@ class _EventPage extends State<EventPage> {
               TextButton(
                 child: Text('Подтвердить'),
                 onPressed: () {
-                  makeReview(starState.currentState!.starLevel,
-                      starState.currentState!.textInBox);
+                  makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
                   setState(() {
                     Navigator.pop(context);
                   });
@@ -226,62 +211,58 @@ class _EventPage extends State<EventPage> {
                 top: 200,
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24),
-                    topRight: Radius.circular(24)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
                 child: Container(
                   color: AppColors.background,
                   child: Column(
                     children: [
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              alignment: Alignment.topLeft,
-                              padding: const EdgeInsets.only(
-                                top: 16,
-                                left: 16,
-                                right: 16,
-                                bottom: 10,
-                              ),
-                              child: Text(
-                                event.title,
+                      Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: const EdgeInsets.only(
+                            top: 16,
+                            left: 16,
+                            right: 16,
+                            bottom: 10,
+                          ),
+                          child: Text(
+                            event.title,
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: AppColors.textDark,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 32,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            right: 16,
+                            top: 16,
+                          ),
+                          alignment: Alignment.topCenter,
+                          child: SizedBox(
+                            width: 100,
+                            height: 48,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                showScoreDialog();
+                              },
+                              style: appButtonStyle,
+                              child: const Text(
+                                "Оценить",
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                  color: AppColors.textDark,
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 36,
+                                  color: Color.fromARGB(255, 50, 80, 234),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
-                            const Spacer(),
-                            Container(
-                              margin: const EdgeInsets.only(
-                                right: 16,
-                                top: 16,
-                              ),
-                              alignment: Alignment.topCenter,
-                              child: SizedBox(
-                                width: 100,
-                              height: 48,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    showScoreDialog();
-                                  },
-                                  style: appButtonStyle,
-                                  child: const Text(
-                                    "Оценить",
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 50, 80, 234),
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]),
+                          ),
+                        ),
+                      ]),
                       Expanded(
                         child: Container(
                           child: ListView(
@@ -301,7 +282,7 @@ class _EventPage extends State<EventPage> {
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                     color: AppColors.textGray,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.normal,
                                     fontSize: 16,
                                   ),
                                 ),
