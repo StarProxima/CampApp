@@ -5,7 +5,6 @@ import 'package:camp_app/styles/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../styles/app_colors.dart';
-import '../scrollAbleList/src/scrollable_positioned_list.dart';
 import '../styles/class_styles.dart';
 
 Widget makeLine(String needText, ImageProvider img, void Function() onPressDo){

@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 import '../award.dart';
+import '../child_profile_page.dart';
 import 'repeatable_widget.dart';
 
 class ParentChildProfilePage extends StatefulWidget {
@@ -18,6 +19,18 @@ class ParentChildProfilePage extends StatefulWidget {
 }
 
 class _ParentChildProfilePageState extends State<ParentChildProfilePage> {
+  List<AvatarCircle> awards = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadAwards().then((value) {
+      setState(() {
+        awards = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,19 +76,14 @@ class _ParentChildProfilePageState extends State<ParentChildProfilePage> {
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Awards(
-                    rad: 48,
-                    name: "sdsd",
-                    description: "sdas",
-                    isReceived: true,
-                  );
+                  return awards[index];
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
                     width: 8,
                   );
                 },
-                itemCount: 100,
+                itemCount: awards.length,
               ),
             ),
             Padding(
