@@ -225,10 +225,10 @@ class _ParentProfilePage extends State<ParentProfilePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                makeLine("Личные данные", AppImages.testPic, () => log("1")),
-                makeLine("Обратная связь", AppImages.testPic,
+                makeLineI("Личные данные", Icons.account_box_outlined, () => log("1")),
+                makeLineI("Обратная связь", Icons.question_mark,
                     () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()))),
-                makeLine("Выход", AppImages.testPic, () => widget.onExit())
+                makeLineI("Выход", Icons.exit_to_app, () => widget.onExit())
               ],
             ),
           ],

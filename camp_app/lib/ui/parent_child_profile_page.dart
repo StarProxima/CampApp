@@ -117,8 +117,7 @@ class _ParentChildProfilePageState extends State<ParentChildProfilePage> {
             const SizedBox(
               height: 24,
             ),
-            makeLine("Обо мне", AppImages.testPic, () {}),
-            makeLine("Мои вожатые", AppImages.testPic, () {}),
+            makeLineI("Обо мне", Icons.account_box_outlined, () {}),
             Spacer(),
           ],
         ),

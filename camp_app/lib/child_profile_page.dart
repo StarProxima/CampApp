@@ -147,9 +147,9 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
             const SizedBox(
               height: 24,
             ),
-            makeLine("Обо мне", AppImages.testPic, () {}),
-            makeLine("Моя медкарта", AppImages.testPic, () {}),
-            makeLine("Выход", AppImages.testPic, () {
+            makeLineI("Обо мне", Icons.account_box_outlined, () {}),
+            makeLineI("Моя медкарта", Icons.local_hospital_outlined, () {}),
+            makeLineI("Выход", Icons.exit_to_app, () {
               widget.onExit();
             }),
             Spacer(),
