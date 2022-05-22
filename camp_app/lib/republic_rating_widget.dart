@@ -3,6 +3,8 @@ import 'package:camp_app/styles/app_images.dart';
 import 'package:flutter/material.dart';
 
 List<String> repName = ["Сметана", "Бананы", "Бочонок", "Шпинат", "Рыба"];
+List<ImageProvider> imgList = [AppImages.smatan, AppImages.banana, AppImages.bochonok, AppImages.shpinat, AppImages.fish];
+
 
 class RepublicRatingWidget extends StatefulWidget {
   @override
@@ -39,7 +41,7 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
                     child: Stack(children: [
                       Container(
                         decoration: BoxDecoration(
-                            image: DecorationImage(image: AppImages.clear),
+                          image: DecorationImage(image: imgList[i]),
                             border: Border.all(
                                 width: 3,
                                 color: i == 0
