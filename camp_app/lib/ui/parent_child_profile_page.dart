@@ -64,6 +64,7 @@ class _ParentChildProfilePageState extends State<ParentChildProfilePage> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Awards(
+                    rad: 48,
                     name: "sdsd",
                     description: "sdas",
                     isReceived: true,

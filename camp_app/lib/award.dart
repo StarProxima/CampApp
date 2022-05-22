@@ -45,6 +45,7 @@ class Awards extends StatelessWidget {
     required this.isReceived,
     this.dateReceipt,
     this.urlImage,
+    required this.rad,
   }) : super(key: key);
 
   final String name;
@@ -52,6 +53,7 @@ class Awards extends StatelessWidget {
   final String? urlImage;
   final bool isReceived;
   final DateTime? dateReceipt;
+  final int rad;
 
   @override
   Widget build(BuildContext context) {
@@ -61,22 +63,13 @@ class Awards extends StatelessWidget {
           width: 100,
           child: Column(
             children: [
-              Container(
-                height: 96,
-                width: 96,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(48),
-                  ),
-                ),
-                child: ColorFiltered(
-                  colorFilter: isReceived
-                      ? ColorFilter.mode(Color.fromARGB(255, 255, 255, 255), BlendMode.modulate)
-                      : ColorFilter.mode(Color.fromARGB(73, 255, 255, 255), BlendMode.modulate),
-                  child: AvatarCircle(
-                    urlImage: urlImage,
-                    radius: 48,
-                  ),
+              ColorFiltered(
+                colorFilter: isReceived
+                    ? ColorFilter.mode(Color.fromARGB(255, 255, 255, 255), BlendMode.modulate)
+                    : ColorFilter.mode(Color.fromARGB(73, 255, 255, 255), BlendMode.modulate),
+                child: AvatarCircle(
+                  urlImage: urlImage,
+                  radius: rad,
                 ),
               ),
               Container(
