@@ -15,5 +15,6 @@ class AppImages {
   static const AssetImage help_circle_outline = AssetImage('assets/help_circle_outline.svg');
   static const AssetImage Icon_cash_outline = AssetImage('assets/Icon_cash_outline.svg');
   static const AssetImage inactive = AssetImage('assets/inactive.svg');
+  static const AssetImage clear = AssetImage('assets/clear.png');
 }
 
