@@ -93,7 +93,6 @@ class _TimeTableState extends State<TimeTable> {
                             return EventPage(
                               eventID: table.events[index].eventInd,
                               eventModel: value,
-                              eventImage: Image,
                               map: index == 0
                                   ? AppImages.mapCharge
                                   : index == 3
