@@ -4,22 +4,152 @@ import 'dart:ffi';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import '../chat_page.dart';
+
 import '../styles/app_colors.dart';
 import '../styles/class_styles.dart';
 import 'parent_child_profile_page.dart';
 import 'repeatable_widget.dart';
 
+class RefillContent extends StatefulWidget {
+  const RefillContent({Key? key}) : super(key: key);
+
+  @override
+  State<RefillContent> createState() => RefillContentState();
+}
+
+class RefillContentState extends State<RefillContent> {
+  final TextEditingController _textFieldController = TextEditingController();
+  late String textInBox = "";
+  late int starLevel = 1;
+  late double sizeOfPic = 42;
+  String? dropdownValue;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 120,
+      child: Column(
+        children: [
+          
+          TextField(
+            onChanged: (value) {
+              setState(() {
+                textInBox = value;
+              });
+            },
+            controller: _textFieldController,
+            decoration: InputDecoration(
+              hintText: "Сумма",
+              hintStyle: TextStyle(color: AppColors.textGray),
+              border: const UnderlineInputBorder(),
+            ),
+          ),
+          Container(
+            
+            padding: const EdgeInsets.only(top: 20),
+            child: DropdownButton<String>(
+              hint: Text('Способ оплаты                        '),
+              value: dropdownValue,
+             onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue = newValue!;
+                });
+              },
+             items: <String>['Карта', 'Qiwi', 'Ещё что-то']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
 class ParentChildPage extends StatefulWidget {
   const ParentChildPage({Key? key}) : super(key: key);
 
   @override
-  State<ParentChildPage> createState() => _ParentChildPage();
+  State<ParentChildPage> createState() => _ParentChildPageState();
 }
 
-class _ParentChildPage extends State<ParentChildPage> {
+
+
+
+class _ParentChildPageState extends State<ParentChildPage> {
   static const double iconSize = 28;
 
+  void addBalance(int count) async {
+    // DateTime now = new DateTime.now();
+    // DateTime date = new DateTime(now.year, now.month, now.day);
+    // //здесь нужно иметь индекс профиля
+    // var url = Uri(scheme: "https", host: "studrasp.ru", path: 'CampApp.php', queryParameters: {
+    //   'action': 'add_review',
+    //   'childInd': '1',
+    //   'eventInd': '${widget.eventID}',
+    //   'starCount': '$starCount',
+    //   'textReview': textReview,
+    //   'date': '$date'
+    // });
+    // var pleas = await http.get(url);
+    // //log(url.toString());
+  }
+
+
+  Future<void> showRefillDialog() {
+    var refillState = GlobalKey<RefillContentState>();
+
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: AppColors.background,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+            title: Text(
+              'Пополнение счёта',
+              style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
+            ),
+            content: RefillContent(
+              key: refillState,
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              TextButton(
+                child: Text('Пополнить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  int? x = int.tryParse(refillState.currentState!.textInBox);
+
+                  if(x != null)
+                  {
+                    addBalance(x);
+                    setState(() {
+                     Navigator.pop(context);
+                    });
+                  }
+                  
+                },
+              ),
+            ],
+          );
+        });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
@@ -82,19 +212,7 @@ class _ParentChildPage extends State<ParentChildPage> {
                       color: AppColors.background,
                       child: ElevatedButton(
                         onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return MaterialApp(
-                                  home: Container(
-                                    child: Column(children: [
-                                      TextField(
-                                        keyboardType: TextInputType.number,
-                                      )
-                                    ]),
-                                  ),
-                                );
-                              });
+                          showRefillDialog();
                         },
                         style: appButtonStyle,
                         child: const Text(

@@ -9,6 +9,74 @@ import '../styles/app_colors.dart';
 import '../styles/class_styles.dart';
 import 'parents_child_page.dart';
 
+class ReviewContent extends StatefulWidget {
+  const ReviewContent({Key? key}) : super(key: key);
+
+  @override
+  State<ReviewContent> createState() => ReviewContentState();
+}
+
+class ReviewContentState extends State<ReviewContent> {
+  final TextEditingController _textFieldController = TextEditingController();
+  late String textInBox = "";
+  late int starLevel = 1;
+  late double sizeOfPic = 42;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 90,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              for (int i = 1; i <= 5; i++)
+                SizedBox(
+                  height: sizeOfPic,
+                  width: sizeOfPic,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        starLevel = i;
+                      });
+                    },
+                    child: SizedBox(
+                      width: sizeOfPic,
+                      height: sizeOfPic,
+                      child: Icon(
+                        starLevel < i ? Icons.star_border_rounded : Icons.star_rounded,
+                        color: AppColors.primary,
+                        size: 42,
+                      ),
+                    ),
+                    style: appButtonStyle,
+                  ),
+                )
+            ],
+          ),
+          TextField(
+            onChanged: (value) {
+              setState(() {
+                textInBox = value;
+              });
+            },
+            controller: _textFieldController,
+            decoration: InputDecoration(
+              hintText: "Напишите отзыв",
+              hintStyle: TextStyle(color: AppColors.textGray),
+              border: const UnderlineInputBorder(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
 class ParentProfilePage extends StatefulWidget {
   const ParentProfilePage({Key? key, required this.onExit}) : super(key: key);
 
@@ -23,6 +91,47 @@ class _ParentProfilePage extends State<ParentProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    Future<void> showScoreDialog() {
+    var starState = GlobalKey<ReviewContentState>();
+
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: AppColors.background,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+            title: Text(
+              'Поставьте оценку',
+              style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
+            ),
+            content: ReviewContent(
+              key: starState,
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              TextButton(
+                child: Text('Подтвердить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  //makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
+  }
+
     return DefaultTextStyle(
       style: const TextStyle(),
       child: Container(
@@ -226,7 +335,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 makeLineI("Личные данные", Icons.account_box_outlined, () => log("1")),
-                makeLineI("Обратная связь", Icons.question_mark,
+                makeLineI("Обратная связь", Icons.chat_outlined,
                     () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()))),
                 makeLineI("Выход", Icons.exit_to_app, () => widget.onExit())
               ],
