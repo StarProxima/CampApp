@@ -14,6 +14,13 @@ class AppImages {
   static const AssetImage heart_outline = AssetImage('assets/heart_outline.svg');
   static const AssetImage help_circle_outline = AssetImage('assets/help_circle_outline.svg');
   static const AssetImage Icon_cash_outline = AssetImage('assets/Icon_cash_outline.svg');
+  
   static const AssetImage inactive = AssetImage('assets/inactive.svg');
+  static const AssetImage map = AssetImage('assets/map.jpg');
+  static const AssetImage mapPicknick = AssetImage('assets/mapPicknick.jpg');
+
+  static const AssetImage mapCharge = AssetImage('assets/mapCharge.jpg');
+  static const AssetImage mapEat = AssetImage('assets/mapEat.jpg');
+  static const AssetImage clear = AssetImage('assets/clear.png');
 }
 

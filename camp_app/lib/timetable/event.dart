@@ -15,7 +15,8 @@ class Event extends StatefulWidget {
       required this.description,
       required this.startTime,
       required this.endTime,
-      required this.onTap})
+      required this.onTap,
+      })
       : super(key: key);
 
   final String title;
@@ -24,6 +25,7 @@ class Event extends StatefulWidget {
   final int startTime;
   final int endTime;
   final bool? isAttached;
+
   final Function() onTap;
 
   @override

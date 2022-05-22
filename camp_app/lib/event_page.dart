@@ -7,6 +7,8 @@ import 'styles/app_images.dart';
 import 'styles/button_styles.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:photo_view/photo_view.dart';
+
 class ReviewContent extends StatefulWidget {
   const ReviewContent({Key? key}) : super(key: key);
 
@@ -93,10 +95,11 @@ Future<EventInfoModel> loadEvent(int eventID) async {
 }
 
 class EventPage extends StatefulWidget {
-  const EventPage({Key? key, required this.eventID, required this.eventModel}) : super(key: key);
+  const EventPage({Key? key, required this.eventID, required this.eventModel, required this.map}) : super(key: key);
 
   final int eventID;
   final EventInfoModel eventModel;
+  final AssetImage map;
 
   @override
   State<EventPage> createState() => _EventPage();
@@ -294,7 +297,46 @@ class _EventPage extends State<EventPage> {
                                     fontSize: 16,
                                   ),
                                 ),
+                                
                               ),
+                              
+                               GestureDetector(
+                                 onTap: () {
+                                   Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Stack(
+                                        children: [
+                                          PhotoView(
+                                            //enableRotation: true,
+                                            enablePanAlways: true,
+                                            imageProvider: widget.map,
+                                          ),
+                                          SafeArea(
+                                            child: Container(
+                                              padding: const EdgeInsets.only(
+                                                top: 16,
+                                                left: 16,
+                                              ),
+                                              child: ElevatedButton(
+                                                  style: appButtonStyle,
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: const Image(
+                                                    height: 24,
+                                                    width: 24,
+                                                    image: AppImages.back,
+                                                  )),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                    );
+                                 },
+                                 child: Image(
+                                    image: widget.map,
+                                ),
+                               )
                             ],
                           ),
                         ),
