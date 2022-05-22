@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../chat_page.dart';
 import '../styles/app_colors.dart';
-import '../scrollAbleList/src/scrollable_positioned_list.dart';
 import '../styles/class_styles.dart';
 import 'parent_child_profile_page.dart';
 import 'repeatable_widget.dart';
@@ -25,7 +24,6 @@ class ParentChildPage extends StatefulWidget {
 
 class _ParentChildPage extends State<ParentChildPage> {
   static const double iconSize = 28;
-  ItemScrollController control = ItemScrollController();
 
   @override
   Widget build(BuildContext context) {

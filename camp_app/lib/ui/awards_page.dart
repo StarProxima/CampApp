@@ -36,7 +36,7 @@ Future<List<AwardModel>> loadAwards() async {
     List<AwardModel> AwardList = [];
     for (int i = 0; i < data.length; i++)
     {
-      if (data[i]["isReceived"] == null) {
+      if (data[i]["isReceived"] == null || data[i]["isReceived"] == "0") {
         AwardList.add(AwardModel(data[i]["name"], data[i]["description"],DateTime.now(),data[i]["urlPhoto"], false));
       } else {
         AwardList.add(AwardModel(data[i]["name"], data[i]["description"],DateTime.parse(data[i]["getData"].toString().substring(0,10)),data[i]["urlPhoto"], true));
