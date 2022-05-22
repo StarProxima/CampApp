@@ -75,7 +75,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const QRScanner()));
+                      //Navigator.of(context).push(MaterialPageRoute(builder: (context) => const QRScanner()));
                     },
                     //onPressed: () => Navigator.pop(context),
                     child: const Align(

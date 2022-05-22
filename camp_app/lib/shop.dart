@@ -1,8 +1,13 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:camp_app/item_info_widget.dart';
 import 'package:camp_app/shop_element_widget.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
+
+import 'ui/qr_scanner.dart';
 
 class ShopWidget extends StatefulWidget {
   @override
@@ -46,6 +51,7 @@ class _ShopWidgetState extends State<ShopWidget> {
       ShopItem("Значок", "https://cdn83.printdirect.ru/cache/item/33/5f/240-300s300-front-0-0.jpg", 75),
     ])
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,9 +87,17 @@ class _ShopWidgetState extends State<ShopWidget> {
                     ElevatedButton(
                       style: appButtonStyle,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ItemInfoWidget()),
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => QRScanner(
+                              onDetect: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const ItemInfoWidget()),
+                                );
+                              },
+                            ),
+                          ),
                         );
                       },
                       child: Icon(
