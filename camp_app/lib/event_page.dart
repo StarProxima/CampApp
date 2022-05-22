@@ -297,46 +297,49 @@ class _EventPage extends State<EventPage> {
                                     fontSize: 16,
                                   ),
                                 ),
-                                
                               ),
-                              
-                               GestureDetector(
-                                 onTap: () {
-                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => Stack(
-                                        children: [
-                                          PhotoView(
-                                            //enableRotation: true,
-                                            enablePanAlways: true,
-                                            imageProvider: widget.map,
-                                          ),
-                                          SafeArea(
-                                            child: Container(
-                                              padding: const EdgeInsets.only(
-                                                top: 16,
-                                                left: 16,
-                                              ),
-                                              child: ElevatedButton(
-                                                  style: appButtonStyle,
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: const Image(
-                                                    height: 24,
-                                                    width: 24,
-                                                    image: AppImages.back,
-                                                  )),
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                    );
-                                 },
-                                 child: Image(
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Stack(
+                                              children: [
+                                                PhotoView(
+                                                  //enableRotation: true,
+                                                  enablePanAlways: true,
+                                                  imageProvider: widget.map,
+                                                ),
+                                                SafeArea(
+                                                  child: Container(
+                                                    padding: const EdgeInsets.only(
+                                                      top: 16,
+                                                      left: 16,
+                                                    ),
+                                                    child: ElevatedButton(
+                                                        style: appButtonStyle,
+                                                        onPressed: () {
+                                                          Navigator.of(context).pop();
+                                                        },
+                                                        child: const Image(
+                                                          height: 24,
+                                                          width: 24,
+                                                          image: AppImages.back,
+                                                        )),
+                                                  ),
+                                                ),
+                                              ],
+                                            )),
+                                  );
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(),
+                                  decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
+                                  child: Image(
                                     image: widget.map,
+                                  ),
                                 ),
-                               )
+                              )
                             ],
                           ),
                         ),
