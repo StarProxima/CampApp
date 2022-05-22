@@ -48,7 +48,7 @@ class NowDayTimetable {
         host: "studrasp.ru",
         path: 'CampApp.php',
         queryParameters: {'action': 'get_timetable_json', 'index': '${index}', 'weekday': '${weekday}'});
-    log(url.toString());
+    //log(url.toString());
     var pleas =
         await http.get(url);
     // flutter clean не работает. От pleas нужно получить ответ.
