@@ -16,7 +16,7 @@ class AwardModel {
   String description;
   String urlImage;
   bool isReceived;
-  DateTime dateReceipt;
+  DateTime? dateReceipt;
 }
 
 Future<List<AwardModel>> loadAwards() async {

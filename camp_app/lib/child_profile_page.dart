@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import 'award.dart';
 import 'ui/repeatable_widget.dart';
 
-Future<List<AwardModel>> loadAwards() async {
+Future<List<AvatarCircle>> loadAwards() async {
   // тут бы индекс человека нужен
   var url = Uri(
       scheme: "https",
@@ -24,14 +24,12 @@ Future<List<AwardModel>> loadAwards() async {
 
   String json = pleas.body.toString();
   final List<dynamic> data = jsonDecode(json);
-  List<AwardModel> awardList = [];
+  List<AvatarCircle> awardList = [];
   for (int i = 0; i < data.length; i++) {
-    awardList.add(AwardModel(
-        "",
-        "",
-        DateTime.parse(data[i]["getData"].toString().substring(0, 10)),
-        data[i]["urlPhoto"],
-        true));
+    awardList.add(AvatarCircle(
+      urlImage: data[i]["urlPhoto"],
+      radius: 36,
+    ));
   }
   return awardList;
 }
@@ -46,7 +44,7 @@ class ChildProfilePage extends StatefulWidget {
 }
 
 class _ChildProfilePageState extends State<ChildProfilePage> {
-  List<AwardModel> awards = [];
+  List<AvatarCircle> awards = [];
 
   @override
   void initState() {
@@ -114,14 +112,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                     left: 16, right: 16, top: 16, bottom: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Awards(
-                    rad: 36,
-                    name: awards[index].name,
-                    description: awards[index].description,
-                    urlImage: awards[index].urlImage,
-                    isReceived: awards[index].isReceived,
-                    dateReceipt: awards[index].dateReceipt,
-                  );
+                  return awards[index];
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
