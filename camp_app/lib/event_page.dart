@@ -262,7 +262,7 @@ class _EventPage extends State<EventPage> {
                               ),
                               alignment: Alignment.topCenter,
                               child: SizedBox(
-                                width: 90,
+                                width: 100,
                               height: 48,
                                 child: ElevatedButton(
                                   onPressed: () {

@@ -1,13 +1,51 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:camp_app/award.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/button_styles.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 import '../styles/app_images.dart';
 
 //import 'event.dart';
+
+class AwardModel {
+  AwardModel(this.name,this.description,this.dateReceipt,this.urlImage,this.isReceived);
+  String name;
+  String description;
+  String urlImage;
+  bool isReceived;
+  DateTime dateReceipt;
+}
+
+Future<List<AwardModel>> loadAwards() async {
+    // тут бы индекс человека нужен
+    var url = Uri(
+        scheme: "https",
+        host: "studrasp.ru",
+        path: 'CampApp.php',
+        queryParameters: {
+          'action': 'get_marked_achievements_for_child',
+          'index': '${1}'
+        });
+    var pleas = await http.get(url);
+
+    String json = pleas.body.toString();
+    final List<dynamic> data = jsonDecode(json);
+    List<AwardModel> AwardList = [];
+    for (int i = 0; i < data.length; i++)
+    {
+      if (data[i]["isReceived"] == null) {
+        AwardList.add(AwardModel(data[i]["name"], data[i]["description"],DateTime.now(),data[i]["urlPhoto"], false));
+      } else {
+        AwardList.add(AwardModel(data[i]["name"], data[i]["description"],DateTime.parse(data[i]["getData"].toString().substring(0,10)),data[i]["urlPhoto"], true));
+      }
+    }
+    return AwardList;
+  }
+
+
 
 class AwardsPage extends StatefulWidget {
   const AwardsPage({Key? key}) : super(key: key);
@@ -18,6 +56,18 @@ class AwardsPage extends StatefulWidget {
 
 class _AwardsPageState extends State<AwardsPage> {
   bool isAllAwards = true;
+  List<AwardModel> awards = [];
+
+@override
+  void initState() {
+    super.initState();
+    loadAwards().then((value) {
+      setState(() {
+        awards = value;
+      });
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -143,16 +193,14 @@ class _AwardsPageState extends State<AwardsPage> {
                               bottom: 16, left: 16, right: 16, top: 16),
                           itemBuilder: (context, index) {
                             return Awards(
-                              name: 'За взятие Киева',
-                              description:
-                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue ante vitae placerat mattis. Mauris rhoncus ex massa, vel placerat urna fermentum non. Phasellus posuere lobortis orci, vitae gravida sapien viverra ac.',
-                              urlImage:
-                                  "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1",
-                              isReceived: index == 2,
-                              dateReceipt: DateTime.now(),
+                              name: awards[index].name,
+                              description: awards[index].description,
+                              urlImage: awards[index].urlImage,
+                              isReceived: awards[index].isReceived,
+                              dateReceipt:awards[index].dateReceipt,
                             );
                           },
-                          itemCount: 10,
+                          itemCount: awards.length,
                           separatorBuilder: (context, index) {
                             return const SizedBox(height: 8);
                           },
