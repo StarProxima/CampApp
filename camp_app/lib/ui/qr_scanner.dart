@@ -17,7 +17,7 @@ class _QRScannerState extends State<QRScanner> with SingleTickerProviderStateMix
   MobileScannerController controller = MobileScannerController(
     torchEnabled: false,
     formats: [BarcodeFormat.qrCode],
-    facing: CameraFacing.front,
+    facing: CameraFacing.back,
   );
 
   bool isStarted = true;

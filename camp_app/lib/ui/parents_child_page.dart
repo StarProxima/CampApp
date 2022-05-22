@@ -29,7 +29,6 @@ class RefillContentState extends State<RefillContent> {
       height: 120,
       child: Column(
         children: [
-          
           TextField(
             onChanged: (value) {
               setState(() {
@@ -44,23 +43,27 @@ class RefillContentState extends State<RefillContent> {
             ),
           ),
           Container(
-            
-            padding: const EdgeInsets.only(top: 20),
+            constraints: const BoxConstraints(minWidth: double.infinity),
+            padding: const EdgeInsets.only(top: 16),
             child: DropdownButton<String>(
-              hint: Text('Способ оплаты                        '),
+              icon: null,
+              hint: Text(
+                'Способ оплаты',
+                style: TextStyle(color: AppColors.textGray),
+                textAlign: TextAlign.left,
+              ),
               value: dropdownValue,
-             onChanged: (String? newValue) {
+              onChanged: (String? newValue) {
                 setState(() {
                   dropdownValue = newValue!;
                 });
               },
-             items: <String>['Карта', 'Qiwi', 'Ещё что-то']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
+              items: <String>['Карта', 'Qiwi', 'Ещё что-то'].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
           ),
         ],
@@ -69,21 +72,12 @@ class RefillContentState extends State<RefillContent> {
   }
 }
 
-
-
-
-
-
-
 class ParentChildPage extends StatefulWidget {
   const ParentChildPage({Key? key}) : super(key: key);
 
   @override
   State<ParentChildPage> createState() => _ParentChildPageState();
 }
-
-
-
 
 class _ParentChildPageState extends State<ParentChildPage> {
   static const double iconSize = 28;
@@ -103,7 +97,6 @@ class _ParentChildPageState extends State<ParentChildPage> {
     // var pleas = await http.get(url);
     // //log(url.toString());
   }
-
 
   Future<void> showRefillDialog() {
     var refillState = GlobalKey<RefillContentState>();
@@ -135,21 +128,19 @@ class _ParentChildPageState extends State<ParentChildPage> {
                 onPressed: () {
                   int? x = int.tryParse(refillState.currentState!.textInBox);
 
-                  if(x != null)
-                  {
+                  if (x != null) {
                     addBalance(x);
                     setState(() {
-                     Navigator.pop(context);
+                      Navigator.pop(context);
                     });
                   }
-                  
                 },
               ),
             ],
           );
         });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(

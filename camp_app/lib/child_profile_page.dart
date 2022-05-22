@@ -27,10 +27,12 @@ Future<List<AvatarCircle>> loadAwards() async {
   final List<dynamic> data = jsonDecode(json);
   List<AvatarCircle> awardList = [];
   for (int i = 0; i < data.length; i++) {
-    awardList.add(AvatarCircle(
-      urlImage: data[i]["urlPhoto"],
-      radius: 36,
-    ));
+    awardList.add(
+      AvatarCircle(
+        urlImage: data[i]["urlPhoto"],
+        radius: 36,
+      ),
+    );
   }
   return awardList;
 }

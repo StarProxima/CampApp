@@ -57,77 +57,75 @@ class _ShopWidgetState extends State<ShopWidget> {
     return Container(
       color: AppColors.background,
       child: SafeArea(
-        child: Expanded(
-          child: Scaffold(
-            body: Column(
-              children: [
-                Row(
-                  children: [
-                    ElevatedButton(
-                      style: appButtonStyle,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: AppColors.primary,
-                        size: 24,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      "Каталог",
-                      style: TextStyle(
-                        color: AppColors.textDark,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const Spacer(),
-                    ElevatedButton(
-                      style: appButtonStyle,
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => QRScanner(
-                              onDetect: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const ItemInfoWidget()),
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                      child: Icon(
-                        Icons.qr_code_scanner_rounded,
-                        color: AppColors.primary,
-                        size: 24,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  color: AppColors.border,
-                  height: 2,
-                ),
-                Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                    itemBuilder: (context, index) {
-                      return ShopElementWidget(model: shops[index]);
+        child: Scaffold(
+          body: Column(
+            children: [
+              Row(
+                children: [
+                  ElevatedButton(
+                    style: appButtonStyle,
+                    onPressed: () {
+                      Navigator.pop(context);
                     },
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(
-                        height: 16,
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: AppColors.primary,
+                      size: 24,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    "Каталог",
+                    style: TextStyle(
+                      color: AppColors.textDark,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  const Spacer(),
+                  ElevatedButton(
+                    style: appButtonStyle,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => QRScanner(
+                            onDetect: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const ItemInfoWidget()),
+                              );
+                            },
+                          ),
+                        ),
                       );
                     },
-                    itemCount: shops.length,
+                    child: Icon(
+                      Icons.qr_code_scanner_rounded,
+                      color: AppColors.primary,
+                      size: 24,
+                    ),
                   ),
-                )
-              ],
-            ),
+                ],
+              ),
+              Container(
+                color: AppColors.border,
+                height: 2,
+              ),
+              Expanded(
+                child: ListView.separated(
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+                  itemBuilder: (context, index) {
+                    return ShopElementWidget(model: shops[index]);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 16,
+                    );
+                  },
+                  itemCount: shops.length,
+                ),
+              )
+            ],
           ),
         ),
       ),

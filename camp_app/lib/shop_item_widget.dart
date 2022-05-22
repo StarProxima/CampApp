@@ -1,3 +1,4 @@
+import 'package:camp_app/image_cache.dart';
 import 'package:camp_app/shop.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _ShopItemWidgetState extends State<ShopItemWidget> {
               alignment: Alignment.topCenter,
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
-              image: NetworkImage(widget.item.previewURL),
+              image: ImageCacheCore.loadProvider(widget.item.previewURL),
             ),
             color: AppColors.border,
           ),

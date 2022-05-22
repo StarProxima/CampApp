@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:camp_app/image_cache.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/ui/repeatable_widget.dart';
 import 'package:flutter/material.dart';
@@ -73,10 +74,6 @@ class ReviewContentState extends State<ReviewContent> {
   }
 }
 
-
-
-
-
 class ParentProfilePage extends StatefulWidget {
   const ParentProfilePage({Key? key, required this.onExit}) : super(key: key);
 
@@ -91,46 +88,44 @@ class _ParentProfilePage extends State<ParentProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     Future<void> showScoreDialog() {
-    var starState = GlobalKey<ReviewContentState>();
+      var starState = GlobalKey<ReviewContentState>();
 
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: AppColors.background,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
-            title: Text(
-              'Поставьте оценку',
-              style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
-            ),
-            content: ReviewContent(
-              key: starState,
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
-                onPressed: () {
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                },
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              backgroundColor: AppColors.background,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+              title: Text(
+                'Поставьте оценку',
+                style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
               ),
-              TextButton(
-                child: Text('Подтвердить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
-                onPressed: () {
-                  //makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                },
+              content: ReviewContent(
+                key: starState,
               ),
-            ],
-          );
-        });
-  }
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
+                TextButton(
+                  child: Text('Подтвердить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                  onPressed: () {
+                    //makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
+              ],
+            );
+          });
+    }
 
     return DefaultTextStyle(
       style: const TextStyle(),
@@ -171,7 +166,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                     clipBehavior: Clip.antiAlias,
                     width: 72,
                     height: 72,
-                    child: Image.network(
+                    child: ImageCacheCore.load(
                         "https://sun2-4.userapi.com/s/v1/ig2/MZ-ouRlLRxelxSixL5Fb8K1OvlzF6ELa3yj-aTbgNa-SlGwQuq0fRT0JME3FbQ9-75bbYny2e9M3zxveBBEXGL4r.jpg?size=400x400&quality=95&crop=32,378,702,702&ava=1"),
                     decoration: const BoxDecoration(
                       color: Colors.white,
@@ -270,7 +265,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                             clipBehavior: Clip.antiAlias,
                             width: 84,
                             height: 84,
-                            child: Image.network(
+                            child: ImageCacheCore.load(
                                 "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1"),
                             decoration: BoxDecoration(
                               color: AppColors.background,

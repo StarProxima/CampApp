@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:camp_app/image_cache.dart';
 import 'package:flutter/material.dart';
 import 'styles/app_colors.dart';
 import 'styles/app_images.dart';
@@ -126,7 +127,7 @@ class _EventPage extends State<EventPage> {
           alignment: Alignment.topCenter,
           fit: BoxFit.fitWidth,
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
-          image: NetworkImage(event.imgUrl),
+          image: ImageCacheCore.loadProvider(event.imgUrl),
         )),
       );
     } else {
