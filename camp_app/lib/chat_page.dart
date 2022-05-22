@@ -29,12 +29,14 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    _loadMessages();
+    _promo();
   }
 
   void _addMessage(types.Message message) {
     setState(() {
       _messages.insert(0, message);
+      log('--------');
+      log(jsonEncode(_messages)); 
     });
   }
 
@@ -153,7 +155,7 @@ class _ChatPageState extends State<ChatPage> {
     final index = _messages.indexWhere((element) => element.id == message.id);
     final updatedMessage = _messages[index].copyWith(previewData: previewData);
 
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         _messages[index] = updatedMessage;
       });
@@ -172,12 +174,152 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _loadMessages() async {
-    final response = await rootBundle.loadString('assets/messages.json');
+    final response = await rootBundle.loadString('assets/promoChat.json');
     final messages =
         (jsonDecode(response) as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
 
     setState(() {
       _messages = messages;
+    });
+  }
+
+  void _promo() async {
+    String response = """{
+        "author": {
+            "firstName": "Administration",
+            "id": "b4878b96-efbc-479a-8291-474ef323dec7",
+            "imageUrl": "https://avatars.githubusercontent.com/u/14123304?v=4"
+        },
+        "createdAt": 1653211000835,
+        "id": "9dcc55c2-2a28-492e-817b-aa81feec86d7",
+        "status": "seen",
+        "type": "text",
+        "text": "Вас приветствует администрация, что вас интересует?"
+    }""";
+    
+    await Future.delayed(Duration(seconds: 1));
+
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
+    });
+
+    response =  """{
+        "author": {
+            "id": "06c33e8b-e835-4736-80f4-63f44b66666c"
+        },
+        "createdAt": 1653211200835,
+        "id": "77e057f8-c651-405b-b2b7-f75746843fcf",
+        "status": "seen",
+        "type": "text",
+        "text": "Здравствуйте, мой ребёнок недавно увидел ваш рекламный ролик в рекомендациях и заинтреловался. Можете рассказать подробнее о вашем лагере?"
+    },""" + response;
+    
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
+    });
+
+    response =  """{
+        "author": {
+            "firstName": "Administration",
+            "id": "b4878b96-efbc-479a-8291-474ef323dec7",
+            "imageUrl": "https://avatars.githubusercontent.com/u/14123304?v=4"
+        },
+        "createdAt": 1653211266221,
+        "id": "5a708fd2-bee6-4862-9f6e-31effebc9732",
+        "type": "text",
+        "previewData": {
+            "description": "Санаторий \\"Вита\\" (г. Анапа) - современный комплекс для летнего детского отдыха, расположенный на первой береговой линии Черного моря",
+            "image": {
+                "height": 1120.0,
+                "url": "https://static.tildacdn.com/tild3164-3734-4163-a265-366431633231/oNX0oP7wYjY.jpg",
+                "width": 1680.0
+            },
+            "link": "https://vita-anapa.ru",
+            "title": "Санаторий Вита / Главная"
+        },
+        "text": "Здравствуйте, да, конечно. У нас есть сайт, где вы можете ознакомиться со всей необходимой информацией: https://vita-anapa.ru"
+    },""" + response;
+    
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
+    });
+
+    response =  """{
+        "author": {
+            "id": "06c33e8b-e835-4736-80f4-63f44b66666c"
+        },
+        "createdAt": 1653211352553,
+        "id": "e40b23c4-3992-4c5a-b982-75899a062e51",
+        "status": "seen",
+        "type": "text",
+        "text": "А можно список всех процедур, которые проводит санаторий?"
+    },""" + response;
+    
+    await Future.delayed(Duration(seconds: 5));
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
+    });
+
+    response =  """{
+        "author": {
+            "firstName": "Administration",
+            "id": "b4878b96-efbc-479a-8291-474ef323dec7",
+            "imageUrl": "https://avatars.githubusercontent.com/u/14123304?v=4"
+        },
+        "createdAt": 1653211413537,
+        "id": "d272c1d1-dedc-4c0c-aa0e-1ed622b074f8",
+        "type": "text",
+        "text": "Да, вот:"
+    },""" + response;
+    
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
+    });
+
+    response =  """{
+        "author": {
+            "firstName": "Administration",
+            "id": "b4878b96-efbc-479a-8291-474ef323dec7",
+            "imageUrl": "https://avatars.githubusercontent.com/u/14123304?v=4"
+        },
+        "createdAt": 1653211420192,
+        "id": "d4f33403-80e2-4cd9-a606-a52266518ad5",
+        "type": "file",
+        "mimeType": "application/pdf",
+        "name": "20_Полный_перечень_медицинских_услуг.pdf",
+        "size": 771034,
+        "uri": "C:\\\\Users\\\\rusta\\\\Downloads\\\\20_Полный_перечень_медицинских_услуг.pdf"
+    },""" + response;
+    
+    await Future.delayed(Duration(seconds: 1));
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
+    });
+
+    response =  """{
+        "author": {
+            "id": "06c33e8b-e835-4736-80f4-63f44b66666c"
+        },
+        "createdAt": 1653212417877,
+        "id": "d235c852-0fd7-4323-9267-8fbe9357c375",
+        "type": "text",
+        "status": "sent",
+        "text": "Спасибо"
+    },""" + response;
+    
+    await Future.delayed(Duration(seconds: 8));
+    setState(() {
+      _messages =
+        (jsonDecode("[" + response + "]") as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
     });
   }
 
@@ -232,6 +374,8 @@ class _ChatPageState extends State<ChatPage> {
                   showUserAvatars: true,
                   isLastPage: true,
                   theme: DefaultChatTheme(
+                      sendButtonIcon: const Icon(Icons.send_sharp),
+                      attachmentButtonIcon: const Icon(Icons.attach_file_rounded),
                       backgroundColor: AppColors.background,
                       messageInsetsVertical: 12,
                       messageInsetsHorizontal: 12,

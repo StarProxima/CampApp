@@ -56,7 +56,7 @@ class _AutorizationState extends State<Autorization> {
                     widget.onLoginChild();
                   },
                   child: Text(
-                    "Вход как ребенка",
+                    "Войти как ребёнок",
                     style: TextStyle(
                       color: AppColors.background,
                       fontSize: 16,
@@ -77,7 +77,7 @@ class _AutorizationState extends State<Autorization> {
                     widget.onLoginParent();
                   },
                   child: Text(
-                    "Вход как родителя",
+                    "Войти как родитель",
                     style: TextStyle(
                       color: AppColors.background,
                       fontSize: 16,

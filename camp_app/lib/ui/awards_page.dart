@@ -19,6 +19,21 @@ class AwardModel {
   DateTime? dateReceipt;
 }
 
+
+
+
+
+class AwardsPage extends StatefulWidget {
+  const AwardsPage({Key? key}) : super(key: key);
+
+  @override
+  _AwardsPageState createState() => _AwardsPageState();
+}
+
+class _AwardsPageState extends State<AwardsPage> {
+  bool isAllAwards = true;
+  List<AwardModel> awards = [];
+
 Future<List<AwardModel>> loadAwards() async {
     // тут бы индекс человека нужен
     var url = Uri(
@@ -44,20 +59,7 @@ Future<List<AwardModel>> loadAwards() async {
     }
     return AwardList;
   }
-
-
-
-class AwardsPage extends StatefulWidget {
-  const AwardsPage({Key? key}) : super(key: key);
-
-  @override
-  _AwardsPageState createState() => _AwardsPageState();
-}
-
-class _AwardsPageState extends State<AwardsPage> {
-  bool isAllAwards = true;
-  List<AwardModel> awards = [];
-
+  
 @override
   void initState() {
     super.initState();

@@ -20,8 +20,7 @@ class RefillContent extends StatefulWidget {
 class RefillContentState extends State<RefillContent> {
   final TextEditingController _textFieldController = TextEditingController();
   late String textInBox = "";
-  late int starLevel = 1;
-  late double sizeOfPic = 42;
+
   String? dropdownValue;
   @override
   Widget build(BuildContext context) {
