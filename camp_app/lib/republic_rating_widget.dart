@@ -3,6 +3,8 @@ import 'package:camp_app/styles/app_images.dart';
 import 'package:flutter/material.dart';
 
 List<String> repName = ["Сметана", "Бананы", "Бочонок", "Шпинат", "Рыба"];
+List<ImageProvider> imgList = [AppImages.smatan, AppImages.banana, AppImages.bochonok, AppImages.shpinat, AppImages.fish];
+
 
 class RepublicRatingWidget extends StatefulWidget {
   @override
@@ -14,17 +16,13 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 16),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.only(top: 64),
           child: Text(
             "Рейтинг",
             textAlign: TextAlign.left,
-            style: TextStyle(
-                color: AppColors.textDark,
-                fontSize: 32,
-                fontWeight: FontWeight.bold),
+            style: TextStyle(color: AppColors.textDark, fontSize: 32, fontWeight: FontWeight.bold),
           ),
         ),
         for (int i = 0; i <= 4; i++)
@@ -43,7 +41,7 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
                     child: Stack(children: [
                       Container(
                         decoration: BoxDecoration(
-                          image: DecorationImage(image: AppImages.clear),
+                          image: DecorationImage(image: imgList[i]),
                             border: Border.all(
                                 width: 3,
                                 color: i == 0
@@ -53,22 +51,25 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
                                         : i == 2
                                             ? Color(0xFFB25600)
                                             : Color(0x00B25600)),
-                            borderRadius:
-                                BorderRadius.all(const Radius.circular(60))),
-                            
+                            borderRadius: BorderRadius.all(const Radius.circular(60))),
                       )
                     ]),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(40),
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color:
-                              Color.fromARGB(33, 188, 188, 188), //shadowColor
-                          spreadRadius: 8,
-                          blurRadius: 8,
+                          color: i == 0
+                              ? Color(0xFFFFCC4A).withOpacity(0.2)
+                              : i == 1
+                                  ? Color(0xFFBDBDBD).withOpacity(0.2)
+                                  : i == 2
+                                      ? Color(0xFFB25600).withOpacity(0.2)
+                                      : AppColors.shadow, //shadowColor
+                          spreadRadius: 4,
+                          blurRadius: 16,
                           offset: Offset.zero, // changes position of shadow
                         ),
                       ],
@@ -84,13 +85,15 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
+                          height: 42,
+                          alignment: Alignment.centerLeft,
                           child: Text(
                             "Республика " + repName[i],
                             textAlign: TextAlign.justify,
                             style: const TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                              fontSize: 20,
                             ),
                           ),
                         ),
@@ -98,8 +101,7 @@ class _RepublicRatingWidgetState extends State<RepublicRatingWidget> {
                           height: 4,
                         ),
                         Container(
-                          constraints:
-                              const BoxConstraints(maxWidth: double.infinity),
+                          constraints: const BoxConstraints(maxWidth: double.infinity),
                           child: const Text(
                             "1024 очка",
                             textAlign: TextAlign.justify,

@@ -1,8 +1,10 @@
 import 'package:camp_app/shop.dart';
 import 'package:camp_app/shop_item_widget.dart';
 import 'package:camp_app/styles/app_colors.dart';
+import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class ShopElementWidget extends StatefulWidget {
   const ShopElementWidget({Key? key, required this.model}) : super(key: key);
@@ -13,6 +15,7 @@ class ShopElementWidget extends StatefulWidget {
 }
 
 class _ShopElementWidgetState extends State<ShopElementWidget> {
+  var map = AssetImage('assets/map.jpg');
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,3 +55,5 @@ class _ShopElementWidgetState extends State<ShopElementWidget> {
     );
   }
 }
+
+class PhotoView {}

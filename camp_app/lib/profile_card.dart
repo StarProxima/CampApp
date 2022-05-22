@@ -44,6 +44,10 @@ class ProfileCard extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(color: AppColors.textDark, fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "184 очка",
+                style: TextStyle(color: AppColors.textGray, fontSize: 16, fontWeight: FontWeight.normal),
               )
             ],
           )

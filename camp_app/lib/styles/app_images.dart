@@ -22,5 +22,10 @@ class AppImages {
   static const AssetImage mapCharge = AssetImage('assets/mapCharge.jpg');
   static const AssetImage mapEat = AssetImage('assets/mapEat.jpg');
   static const AssetImage clear = AssetImage('assets/clear.png');
+  static const AssetImage fish = AssetImage('assets/fish.jpg');
+  static const AssetImage banana = AssetImage('assets/banana.jpg');
+  static const AssetImage smatan = AssetImage('assets/smatan.jpg');
+  static const AssetImage shpinat = AssetImage('assets/shpinat.jpg');
+  static const AssetImage bochonok = AssetImage('assets/bochonok.jpg');
 }
 

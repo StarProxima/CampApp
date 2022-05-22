@@ -8,6 +8,8 @@
 	<string>Приложению необходим доступ к галерее для отправки изображений</string>
 	<key>CFBundleDisplayName</key>
 	<string>Camp App</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Приложению необходим доступ к камере для сканирования qr кода</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

@@ -7,25 +7,22 @@ import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/styles/button_styles.dart';
 
 class QRScanner extends StatefulWidget {
-  const QRScanner({Key? key}) : super(key: key);
-
+  const QRScanner({Key? key, required this.onDetect}) : super(key: key);
+  final Function() onDetect;
   @override
-  _QRScannerState createState() =>
-      _QRScannerState();
+  _QRScannerState createState() => _QRScannerState();
 }
 
-class _QRScannerState
-    extends State<QRScanner>
-    with SingleTickerProviderStateMixin {
-  
-
+class _QRScannerState extends State<QRScanner> with SingleTickerProviderStateMixin {
   MobileScannerController controller = MobileScannerController(
     torchEnabled: false,
     formats: [BarcodeFormat.qrCode],
-    facing: CameraFacing.front,
+    facing: CameraFacing.back,
   );
 
   bool isStarted = true;
+
+  bool wasFind = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,28 +37,32 @@ class _QRScannerState
                 fit: BoxFit.contain,
                 onDetect: (barcode, args) {
                   setState(() {
-                     //barcode.rawValue;
-                     Navigator.of(context).pop();
+                    if (!wasFind) {
+                      wasFind = true;
+                      widget.onDetect();
+                    }
+                    //barcode.rawValue;
+                    //Navigator.of(context).pop();
                   });
                 },
               ),
               SafeArea(
-              child: Container(
-                padding: const EdgeInsets.only(
-                  top: 16,
-                  left: 16,
-                ),
-                child: ElevatedButton(
-                    style: onlyIcons,
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Image(
-                      height: 24,
-                      width: 24,
-                      color: Colors.white,
-                      image: AppImages.back,
-                    )),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    top: 16,
+                    left: 16,
+                  ),
+                  child: ElevatedButton(
+                      style: onlyIcons,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Image(
+                        height: 24,
+                        width: 24,
+                        color: Colors.white,
+                        image: AppImages.back,
+                      )),
                 ),
               ),
               Align(
@@ -98,10 +99,8 @@ class _QRScannerState
                             }
                           },
                         ),
-                        
                         onPressed: () => controller.toggleTorch(),
                       ),
-                      
                       ElevatedButton(
                         style: onlyIcons,
                         child: ValueListenableBuilder(
@@ -118,7 +117,6 @@ class _QRScannerState
                             }
                           },
                         ),
-                       
                         onPressed: () => controller.switchCamera(),
                       ),
                     ],

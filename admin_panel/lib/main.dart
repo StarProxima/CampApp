@@ -50,9 +50,36 @@ class Menu {
 class _MyHomePageState extends State<MyHomePage> {
   var menus = [
     Menu(
+      "Вожатые",
+      Icon(
+        Icons.person_pin_rounded,
+        color: AppColors.primary,
+        size: 24.0,
+        semanticLabel: '',
+      ),
+    ),
+    Menu(
+      "Родители",
+      Icon(
+        Icons.person,
+        color: AppColors.primary,
+        size: 24.0,
+        semanticLabel: '',
+      ),
+    ),
+    Menu(
+      "Дети",
+      Icon(
+        Icons.person_pin_circle,
+        color: AppColors.primary,
+        size: 24.0,
+        semanticLabel: '',
+      ),
+    ),
+    Menu(
       "Статистика",
       Icon(
-        Icons.favorite,
+        Icons.list_alt,
         color: AppColors.primary,
         size: 24.0,
         semanticLabel: '',
@@ -61,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Menu(
       "Сообщения",
       Icon(
-        Icons.favorite,
+        Icons.message,
         color: AppColors.primary,
         size: 24.0,
         semanticLabel: '',

@@ -73,10 +73,6 @@ class ReviewContentState extends State<ReviewContent> {
   }
 }
 
-
-
-
-
 class ParentProfilePage extends StatefulWidget {
   const ParentProfilePage({Key? key, required this.onExit}) : super(key: key);
 
@@ -91,46 +87,44 @@ class _ParentProfilePage extends State<ParentProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     Future<void> showScoreDialog() {
-    var starState = GlobalKey<ReviewContentState>();
+      var starState = GlobalKey<ReviewContentState>();
 
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: AppColors.background,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
-            title: Text(
-              'Поставьте оценку',
-              style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
-            ),
-            content: ReviewContent(
-              key: starState,
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
-                onPressed: () {
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                },
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              backgroundColor: AppColors.background,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+              title: Text(
+                'Поставьте оценку',
+                style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
               ),
-              TextButton(
-                child: Text('Подтвердить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
-                onPressed: () {
-                  //makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                },
+              content: ReviewContent(
+                key: starState,
               ),
-            ],
-          );
-        });
-  }
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
+                TextButton(
+                  child: Text('Подтвердить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                  onPressed: () {
+                    //makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
+              ],
+            );
+          });
+    }
 
     return DefaultTextStyle(
       style: const TextStyle(),

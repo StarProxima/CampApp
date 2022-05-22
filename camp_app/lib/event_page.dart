@@ -6,7 +6,6 @@ import 'styles/app_colors.dart';
 import 'styles/app_images.dart';
 import 'styles/button_styles.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:photo_view/photo_view.dart';
 
 class ReviewContent extends StatefulWidget {
