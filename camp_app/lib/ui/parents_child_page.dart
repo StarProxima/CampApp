@@ -109,29 +109,29 @@ class _ParentChildPage extends State<ParentChildPage> {
             const SizedBox(
               height: 8,
             ),
-            makeLine("Профиль", AppImages.testPic, () {
+            makeLineI("Профиль", Icons.account_box_outlined, () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const ParentChildProfilePage()));
-            }),
+            },),
             const SizedBox(
               height: 8,
             ),
-            makeLine("Здоровье", AppImages.testPic, () => log("2")),
+            makeLineI("Здоровье", Icons.favorite, () => log("2")),
             const SizedBox(
               height: 8,
             ),
-            makeLine("Питание", AppImages.testPic, () => log("2")),
+            makeLineI("Питание", Icons.emoji_food_beverage_outlined, () => log("2")),
             const SizedBox(
               height: 8,
             ),
-            makeLine("Расписание", AppImages.testPic, () => log("2")),
+            makeLineI("Расписание", Icons.format_list_bulleted, () => log("2")),
             const SizedBox(
               height: 8,
             ),
-            makeLine("Активность", AppImages.testPic, () => log("2")),
+            makeLineI("Активность", Icons.mood_outlined, () => log("2")),
             const SizedBox(
               height: 8,
             ),
-            makeLine("Замечания", AppImages.testPic, () => log("2")),
+            makeLineI("Замечания", Icons.new_releases_outlined, () => log("2")),
           ],
         ),
       ),
