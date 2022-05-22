@@ -6,8 +6,6 @@ import 'package:camp_app/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'image_cache.dart';
-
 class AvatarCircle extends StatelessWidget {
   const AvatarCircle({Key? key, this.urlImage, this.haveBorder = true, this.radius = 36}) : super(key: key);
 
@@ -34,7 +32,7 @@ class AvatarCircle extends StatelessWidget {
       ),
       child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(2.0 * radius)),
-          child: urlImage != null ? ImageCacheCore.load(urlImage!) : Container()),
+          child: urlImage != null ? Image.network(urlImage!) : Container()),
     );
   }
 }

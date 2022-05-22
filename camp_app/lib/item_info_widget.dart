@@ -1,9 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
-
-import 'image_cache.dart';
 
 class ItemInfoWidget extends StatefulWidget {
   const ItemInfoWidget({Key? key}) : super(key: key);
@@ -36,8 +33,7 @@ class _ItemInfoWidgetState extends State<ItemInfoWidget> {
                   image: const DecorationImage(
                     alignment: Alignment.topCenter,
                     fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(
-                        "https://cdn83.printdirect.ru/cache/item/33/5f/240-300s300-front-0-0.jpg"),
+                    image: NetworkImage("https://cdn83.printdirect.ru/cache/item/33/5f/240-300s300-front-0-0.jpg"),
                   ),
                 ),
               ),

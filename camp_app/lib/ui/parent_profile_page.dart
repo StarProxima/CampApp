@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:camp_app/image_cache.dart';
 import 'package:camp_app/styles/app_images.dart';
 import 'package:camp_app/ui/repeatable_widget.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +165,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                     clipBehavior: Clip.antiAlias,
                     width: 72,
                     height: 72,
-                    child: ImageCacheCore.load(
+                    child: Image.network(
                         "https://sun2-4.userapi.com/s/v1/ig2/MZ-ouRlLRxelxSixL5Fb8K1OvlzF6ELa3yj-aTbgNa-SlGwQuq0fRT0JME3FbQ9-75bbYny2e9M3zxveBBEXGL4r.jpg?size=400x400&quality=95&crop=32,378,702,702&ava=1"),
                     decoration: const BoxDecoration(
                       color: Colors.white,
