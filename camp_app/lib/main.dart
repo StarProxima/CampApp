@@ -1,3 +1,4 @@
+import 'package:camp_app/republic_rating_widget.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/autorization.dart';
 import 'package:camp_app/timetable/timetable.dart';
@@ -24,20 +25,26 @@ class _MyAppState extends State<MyApp> {
 
   bool isParent = false;
 
+  late var childProfile = ChildProfilePage(
+    onExit: () {
+      setState(() {
+        isAutorized = false;
+      });
+    },
+  );
+
+  late var activity = RepublicRatingWidget();
+
+  late var timeTable = const TimeTable();
+
   Widget getWidget(int index) {
     switch (index) {
       case 0:
-        return ChildProfilePage(
-          onExit: () {
-            setState(() {
-              isAutorized = false;
-            });
-          },
-        );
+        return childProfile;
       case 2:
-        return const ActivityPage();
+        return activity;
       default:
-        return const TimeTable();
+        return timeTable;
     }
   }
 
@@ -63,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                     items: const [
                       BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
                       BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Расписание"),
-                      BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "События"),
+                      BottomNavigationBarItem(icon: Icon(Icons.sunny), label: "Рейтинг"),
                     ],
                     onTap: (index) {
                       setState(() {

@@ -53,9 +53,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
             ),
             Container(
               height: 72,
-              margin: const EdgeInsets.only(
-                left: 16,
-              ),
+              margin: const EdgeInsets.only(left: 16, top: 16),
               color: AppColors.background,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,9 +62,8 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                     clipBehavior: Clip.antiAlias,
                     width: 72,
                     height: 72,
-                    child: const Image(
-                      image: AppImages.testPic,
-                    ),
+                    child: Image.network(
+                        "https://sun2-4.userapi.com/s/v1/ig2/MZ-ouRlLRxelxSixL5Fb8K1OvlzF6ELa3yj-aTbgNa-SlGwQuq0fRT0JME3FbQ9-75bbYny2e9M3zxveBBEXGL4r.jpg?size=400x400&quality=95&crop=32,378,702,702&ava=1"),
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(
@@ -83,7 +80,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                     ),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 12,
                   ),
                   Container(
                     padding: const EdgeInsets.only(right: 32),
@@ -93,11 +90,10 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                       children: [
                         Container(
                           child: const Text(
-                            "Чел Челикович",
+                            "Гиренко Даниил",
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold,
                               fontSize: 24,
                             ),
@@ -113,8 +109,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               color: Color(0xFFA6B2C3),
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.normal,
                               fontSize: 16,
                             ),
                           ),
@@ -129,9 +124,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
               height: 10,
             ),
             Container(
-                margin: const EdgeInsets.only(
-                  left: 16,
-                ),
+                margin: const EdgeInsets.only(left: 16, top: 8),
                 height: 40,
                 color: AppColors.background,
                 child: const Text(
@@ -139,14 +132,10 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
-                    fontFamily: 'Roboto',
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
                 )),
-            const SizedBox(
-              height: 10,
-            ),
             Container(
               margin: const EdgeInsets.only(
                 left: 16,
@@ -154,7 +143,7 @@ class _ParentProfilePage extends State<ParentProfilePage> {
               height: 134,
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 20,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return ElevatedButton(
                       onPressed: () {
@@ -165,26 +154,24 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const SizedBox(
-                            height: 10,
+                            height: 8,
                           ),
                           Container(
                             //color: Color.fromARGB(255, 255, 0, 0),
                             clipBehavior: Clip.antiAlias,
                             width: 84,
                             height: 84,
-                            child: const Image(
-                              image: AppImages.testPic,
-                            ),
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
+                            child: Image.network(
+                                "https://sun2-4.userapi.com/s/v1/ig2/9lmQapzTb9GZbpZApYXDtaLIBPTLNRXUyThAgPctJzQ4FbPA8UkTdfpHGziBQntTahlvo53CTq1t-E-zDjxJOMLg.jpg?size=400x400&quality=96&crop=524,550,1090,1090&ava=1"),
+                            decoration: BoxDecoration(
+                              color: AppColors.background,
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(42),
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color.fromARGB(33, 188, 188, 188), //shadowColor
-                                  spreadRadius: 8,
-                                  blurRadius: 8,
+                                  color: AppColors.shadow, //shadowColor
+                                  blurRadius: 16,
                                   offset: Offset.zero, // changes position of shadow
                                 ),
                               ],
@@ -196,12 +183,11 @@ class _ParentProfilePage extends State<ParentProfilePage> {
                           Container(
                             constraints: const BoxConstraints(maxWidth: double.infinity),
                             child: Text(
-                              "Рустам" + index.toString(),
+                              "Рустам",
                               textAlign: TextAlign.justify,
-                              style: const TextStyle(
-                                color: Color(0xFFA6B2C3),
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w500,
+                              style: TextStyle(
+                                color: AppColors.textGray,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
                             ),

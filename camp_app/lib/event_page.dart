@@ -18,12 +18,12 @@ class ReviewContentState extends State<ReviewContent> {
   final TextEditingController _textFieldController = TextEditingController();
   late String textInBox = "";
   late int starLevel = 1;
-  late double sizeOfPic = 38;
+  late double sizeOfPic = 42;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 90,
       child: Column(
         children: [
           Row(
@@ -41,8 +41,10 @@ class ReviewContentState extends State<ReviewContent> {
                     child: SizedBox(
                       width: sizeOfPic,
                       height: sizeOfPic,
-                      child: Image(
-                        image: starLevel >= i ? AppImages.attachSelected : AppImages.attach,
+                      child: Icon(
+                        starLevel < i ? Icons.star_border_rounded : Icons.star_rounded,
+                        color: AppColors.primary,
+                        size: 42,
                       ),
                     ),
                     style: appButtonStyle,
@@ -57,7 +59,11 @@ class ReviewContentState extends State<ReviewContent> {
               });
             },
             controller: _textFieldController,
-            decoration: InputDecoration(hintText: "Напишите отзыв"),
+            decoration: InputDecoration(
+              hintText: "Напишите отзыв",
+              hintStyle: TextStyle(color: AppColors.textGray),
+              border: const UnderlineInputBorder(),
+            ),
           ),
         ],
       ),
@@ -112,9 +118,6 @@ class _EventPage extends State<EventPage> {
   Widget createImage() {
     if (event.imgUrl != "") {
       return Container(
-        //alignment: Alignment.topCenter,
-        // width: MediaQuery.of(context).size.width,
-        //height: 500,
         decoration: BoxDecoration(
             image: DecorationImage(
           alignment: Alignment.topCenter,
@@ -151,13 +154,18 @@ class _EventPage extends State<EventPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Поставьте оценку'),
+            backgroundColor: AppColors.background,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+            title: Text(
+              'Поставьте оценку',
+              style: TextStyle(color: AppColors.textDark, fontWeight: FontWeight.bold),
+            ),
             content: ReviewContent(
               key: starState,
             ),
             actions: <Widget>[
               TextButton(
-                child: Text('Отмена'),
+                child: Text('Отмена', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
                 onPressed: () {
                   setState(() {
                     Navigator.pop(context);
@@ -165,7 +173,7 @@ class _EventPage extends State<EventPage> {
                 },
               ),
               TextButton(
-                child: Text('Подтвердить'),
+                child: Text('Подтвердить', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
                 onPressed: () {
                   makeReview(starState.currentState!.starLevel, starState.currentState!.textInBox);
                   setState(() {

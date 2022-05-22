@@ -232,6 +232,10 @@ class _ChatPageState extends State<ChatPage> {
                   showUserAvatars: true,
                   isLastPage: true,
                   theme: DefaultChatTheme(
+                      backgroundColor: AppColors.background,
+                      messageInsetsVertical: 12,
+                      messageInsetsHorizontal: 12,
+                      messageBorderRadius: 12,
                       primaryColor: AppColors.primary,
                       secondaryColor: AppColors.border,
                       inputBorderRadius: BorderRadius.zero,

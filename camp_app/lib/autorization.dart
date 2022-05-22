@@ -1,6 +1,7 @@
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/class_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Autorization extends StatefulWidget {
   const Autorization({Key? key, required this.onLoginParent, required this.onLoginChild, required this.onRegister})
@@ -28,9 +29,10 @@ class _AutorizationState extends State<Autorization> {
                 margin: const EdgeInsets.only(top: 64),
                 width: 128,
                 height: 128,
+                child: const Image(image: AssetImage('assets/icon.png')),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
-                  color: AppColors.primary,
+                  color: AppColors.background,
                 ),
               ),
               const SizedBox(
@@ -45,27 +47,6 @@ class _AutorizationState extends State<Autorization> {
                 ),
               ),
               const Spacer(),
-              Container(
-                constraints: const BoxConstraints(minWidth: double.infinity),
-                height: 48,
-                child: ElevatedButton(
-                  style: appButtonStyleAutorization,
-                  onPressed: () {
-                    widget.onRegister();
-                  },
-                  child: Text(
-                    "Регистрация",
-                    style: TextStyle(
-                      color: AppColors.background,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
               Container(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 height: 48,

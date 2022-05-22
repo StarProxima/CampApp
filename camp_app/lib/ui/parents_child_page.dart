@@ -17,11 +17,6 @@ class ParentChildPage extends StatefulWidget {
   State<ParentChildPage> createState() => _ParentChildPage();
 }
 
-
-
-
-
-
 class _ParentChildPage extends State<ParentChildPage> {
   static const double iconSize = 28;
 
@@ -48,9 +43,8 @@ class _ParentChildPage extends State<ParentChildPage> {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
-                    fontFamily: 'Roboto',
                     fontWeight: FontWeight.bold,
-                    fontSize: 36,
+                    fontSize: 32,
                   ),
                 )),
             const SizedBox(
@@ -68,13 +62,12 @@ class _ParentChildPage extends State<ParentChildPage> {
                   Container(
                       color: AppColors.background,
                       child: const Text(
-                        "Баланс: 100 деняк",
+                        "Баланс: 100",
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
-                          fontFamily: 'Roboto',
                           fontWeight: FontWeight.w400,
-                          fontSize: 20,
+                          fontSize: 16,
                         ),
                       )),
                   Expanded(
@@ -89,7 +82,19 @@ class _ParentChildPage extends State<ParentChildPage> {
                       color: AppColors.background,
                       child: ElevatedButton(
                         onPressed: () {
-                          log("1");
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return MaterialApp(
+                                  home: Container(
+                                    child: Column(children: [
+                                      TextField(
+                                        keyboardType: TextInputType.number,
+                                      )
+                                    ]),
+                                  ),
+                                );
+                              });
                         },
                         style: appButtonStyle,
                         child: const Text(
@@ -97,9 +102,8 @@ class _ParentChildPage extends State<ParentChildPage> {
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Color.fromARGB(255, 23, 100, 255),
-                            fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
-                            fontSize: 20,
+                            fontSize: 16,
                           ),
                         ),
                       )),
