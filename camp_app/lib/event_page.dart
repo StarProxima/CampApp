@@ -261,11 +261,11 @@ class _EventPage extends State<EventPage> {
                                 showScoreDialog();
                               },
                               style: appButtonStyle,
-                              child: const Text(
+                              child: Text(
                                 "Оценить",
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 50, 80, 234),
+                                  color: AppColors.primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                 ),
