@@ -24,7 +24,7 @@ class _ShopItemWidgetState extends State<ShopItemWidget> {
             borderRadius: const BorderRadius.all(Radius.circular(12)),
             image: DecorationImage(
               alignment: Alignment.topCenter,
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
               image: NetworkImage(widget.item.previewURL),
             ),

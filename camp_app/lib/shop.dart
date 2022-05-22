@@ -27,52 +27,22 @@ class _ShopWidgetState extends State<ShopWidget> {
     ShopModel("Мерч", [
       ShopItem(
           "Футболка Вита",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
+          "https://storage-cdn5.gloria-jeans.ru/medias/GKT010527-4-02-300Wx300H.jpg?context=bWFzdGVyfHByb2R1Y3R8OTIzNnxpbWFnZS9qcGVnfGgyYy9oMmYvOTM1MTMwMjE1MjIyMi9HS1QwMTA1MjctNC0wMl8zMDBXeDMwMEguanBnfDMyNzdjMTc1MjhjYWRlN2ZkMGE4YzQwNTI0MDkxMmQwZmQwMTczOWZhN2U3MThkYTc1ODUxYWE0Yzk2YzJjMWY",
           1200),
-      ShopItem(
-          "худи Вита",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          2300),
-      ShopItem(
-          "Перчатки",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          600),
-      ShopItem(
-          "Перчатки",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          600),
-      ShopItem(
-          "Перчатки",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          600),
-      ShopItem(
-          "Перчатки",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          600),
+      ShopItem("худи Вита", "https://niti-niti.ru/media/images/product/22871/full_hd.jpg", 2300),
+      ShopItem("Перчатки", "https://www.spets.ru/upload/iblock/a6a/TW-59.jpg", 600),
     ]),
     ShopModel("Питание", [
-      ShopItem(
-          "Тортик",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          1200),
-      ShopItem(
-          "Шаурма",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          2300),
+      ShopItem("Тортик", "https://thecake-school.ru/assets/img/blog/milkygirl-cake_h_1.jpg", 1200),
+      ShopItem("Шаурма", "https://kurkumashaurma.by/assets/images/products/104/meksikanskaya-1200-dsc-5855.jpg", 2300),
       ShopItem(
           "Сок",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Orange_juice_1_edit1.jpg/1200px-Orange_juice_1_edit1.jpg",
           600),
     ]),
     ShopModel("Сувениры", [
-      ShopItem(
-          "Брелок",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          200),
-      ShopItem(
-          "Значок",
-          "https://static.wikia.nocookie.net/edopedia/images/a/a6/%D0%AD%D1%87%D0%BF%D0%BE%D1%87%D0%BC%D0%B0%D0%BA.png/revision/latest?cb=20180706160220&path-prefix=ru",
-          75),
+      ShopItem("Брелок", "https://s.a-5.ru/p/9b/ba/9bba5eef56a6f705.jpg", 200),
+      ShopItem("Значок", "https://cdn83.printdirect.ru/cache/item/33/5f/240-300s300-front-0-0.jpg", 75),
     ])
   ];
   @override
