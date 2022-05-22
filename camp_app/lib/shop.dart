@@ -1,3 +1,4 @@
+import 'package:camp_app/item_info_widget.dart';
 import 'package:camp_app/shop_element_widget.dart';
 import 'package:camp_app/styles/app_colors.dart';
 import 'package:camp_app/styles/class_styles.dart';
@@ -79,7 +80,12 @@ class _ShopWidgetState extends State<ShopWidget> {
                     const Spacer(),
                     ElevatedButton(
                       style: appButtonStyle,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ItemInfoWidget()),
+                        );
+                      },
                       child: Icon(
                         Icons.qr_code_scanner_rounded,
                         color: AppColors.primary,
