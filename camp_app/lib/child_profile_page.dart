@@ -66,11 +66,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const ProfileCard(
-                title: "Хахук Рустам",
-                description: "Ребенок",
-                imageURL: null,
-                image: null),
+            const ProfileCard(title: "Хахук Рустам", description: "Ребенок", imageURL: null, image: null),
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
               child: Row(
@@ -88,8 +84,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const AwardsPage()),
+                        MaterialPageRoute(builder: (context) => const AwardsPage()),
                       );
                     },
                     child: Text(
@@ -108,8 +103,7 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
             Container(
               constraints: const BoxConstraints(maxHeight: 104),
               child: ListView.separated(
-                padding: const EdgeInsets.only(
-                    left: 16, right: 16, top: 16, bottom: 16),
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return awards[index];
@@ -155,11 +149,6 @@ class _ChildProfilePageState extends State<ChildProfilePage> {
             ),
             makeLine("Обо мне", AppImages.testPic, () {}),
             makeLine("Моя медкарта", AppImages.testPic, () {}),
-            makeLine("Мои вожатые", AppImages.testPic, () {}),
-            makeLine("Обратная связь", AppImages.testPic, () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ChatPage()));
-            }),
             makeLine("Выход", AppImages.testPic, () {
               widget.onExit();
             }),

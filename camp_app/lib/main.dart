@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
               ? ParentProfilePage(
                   onExit: () {
                     setState(() {
-                      isParent = false;
+                      isAutorized = false;
                     });
                   },
                 )
@@ -73,13 +73,20 @@ class _MyAppState extends State<MyApp> {
                   ),
                 )
           : Autorization(
-              onLogin: () {
+              onLoginParent: () {
+                isParent = true;
+                setState(() {
+                  isAutorized = true;
+                });
+              },
+              onLoginChild: () {
+                isParent = false;
                 setState(() {
                   isAutorized = true;
                 });
               },
               onRegister: () {
-                isParent = true;
+                //isParent = true;
               },
             ),
     );
